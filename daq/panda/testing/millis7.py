@@ -46,7 +46,8 @@ print(milliseconds() - start)
 #Account for 1600 ms delay in Arduino connection
 sleep(1.6)
 
-numValues = 23;
+numValues = 23
+inputLength = 7
 n = 0 #test iterator
 while(n<50):
   #Read in from the serial. Timeout if nothing is available
@@ -55,14 +56,14 @@ while(n<50):
 
   #Setting the time for each trial
   now = datetime.now() #set time
-  timeName = now.strftime("%H:%M:%S") #set current time
+  timeName = now.strftime("%H:%M:%S.%f") [:-3] #set current time
 
   j = 0 #iterating variable for traversing data string
   for i in range (0, numValues):
     prefix = text[j:j+3] #KEY
     data = text[j+4:j+7] #VALUE: 3 digits
     my_dict[prefix] = float(data)
-    j+=7
+    j+=inputLength
 
   db.update({"Latest Trial": trialName})
 
