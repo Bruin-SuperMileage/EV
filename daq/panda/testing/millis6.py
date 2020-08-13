@@ -54,7 +54,7 @@ while(n<50):
 
   #Setting the time for each trial
   now = datetime.now() #set time
-  timeName = now.strftime("%H:%M:%S") #set current time
+  timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
 
   j = 0 #iterating variable for traversing data string
   for i in range (0, numValues):

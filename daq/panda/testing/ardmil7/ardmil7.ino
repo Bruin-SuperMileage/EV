@@ -16,8 +16,8 @@ void loop() {
   value = analogRead(potPin);          //Read and save analog value from potentiometer
   value = map(value, 0, 1023, 0, 255); //Map value 0-1023 to 0-255 (PWM)
   Serial.print("Pot:");
-//  Serial.print(value);
-  Serial.print(910);
+  Serial.print(value);
+//  Serial.print(910);
   delay(100);                          //Small delay
   
   // printing out data values
