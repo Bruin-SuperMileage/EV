@@ -8,7 +8,7 @@ int end_time;                          //
 
 void setup() {
   Serial.begin(9600);
-  sesh = new Session(POT_PIN, DRV_PIN, false);
+  sesh = new Session(POT_PIN, DRV_PINS, false);
   sesh->init_temp_sense(TEMP_PINS); //configure in constants.h
   end_time = 0; //report timer
 }

@@ -9,7 +9,7 @@
 class Session {
    public:
        //interface
-       Session(const int POT_PIN, const int DRV_PIN, bool paused);
+       Session(const int POT_PIN, const int* DRV_PIN, bool paused, bool drive_w_pot=false);
        void init_temp_sense(const int *TEMP_PINS);
        void check_for_command();
        bool check_paused();
@@ -26,11 +26,12 @@ class Session {
        int m_pot_pin;       
        int m_temp_pins[NUM_TEMP_SENSE];
        float m_temps[NUM_TEMP_SENSE];
-       int m_drv_pin;
-       int m_pwm;
-       char com_buff[256];
-       int com_buff_count;
+       int m_drv_pins[8];
+       int m_pwms[NUM_MAGNETS];
+       char m_com_buff[256];
+       int m_com_buff_count;
        bool m_paused_flag;
+       bool m_drive_w_pot;
 };
 
 #endif
