@@ -5,6 +5,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+// Constants for dyno
 const int POT_PIN = A0;
 const int NUM_TEMP_SENSE = 5;
 const int TEMP_PINS[NUM_TEMP_SENSE] = {A1, A2, A3, A4, A5}; //Use TMP36 sensors
