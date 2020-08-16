@@ -4,11 +4,15 @@
 
 #include "Session.h"
 
-Session::Session(const int POT_PIN, const int DRV_PIN, bool paused) {
+Session::Session(const int POT_PIN, const int *DRV_PINS, bool paused, bool drive_w_pot) {
   m_pot_pin = POT_PIN;
-  m_drv_pin = DRV_PIN;
-  memset(com_buff, 0, sizeof(com_buff));
-  com_buff_count = 0;
+  for (int i = 0; i < NUM_MAGNETS; i++) {
+    m_drv_pins[i] = DRV_PINS[i];
+    m_pwms[i] = 0;
+  }
+  memset(m_com_buff, 0, sizeof(m_com_buff));
+  m_com_buff_count = 0;
+  m_drive_w_pot = drive_w_pot;
   if (paused) m_paused_flag = 1;
   else m_paused_flag = 0;
 }
@@ -20,16 +24,36 @@ void Session::init_temp_sense(const int *TEMP_PINS) {
 }
 
 void Session::process_command() {
-  if (com_buff_count == 1) {
+  if (m_com_buff_count == 1) {
     //easy parsing for single char commands
-    if (com_buff[0] == 'R') {
+    if (m_com_buff[0] == 'R') {
       //resume
       m_paused_flag = false;
     }
-    if (com_buff[0] == 'P') {
+    if (m_com_buff[0] == 'P') {
       //pause
       m_paused_flag = true;
     }
+  } else { //multi-char commands
+    //extract command prefix
+    String command = "";
+    int i;
+    for (i = 0; i < m_com_buff_count; i++) {
+      if (m_com_buff[i] != '=') command += m_com_buff[i];
+      else {i++; break;}
+    }
+
+    //handle commands
+    if (command == "MAGNET") {
+      //assumed format:
+      //MAGNET=1:240,3:000, 
+      while (i < m_com_buff_count) {
+        //still more to be parsed
+        String pwm_str = String(m_com_buff[i+2]) + String(m_com_buff[i+3]) + String(m_com_buff[i+4]);
+        m_pwms[m_com_buff[i] - '0'] = pwm_str.toInt();
+        i += 6;
+      }
+    } 
   }
   //command stored in 256 byte buffer => can implement multi-char commands too
 }
@@ -41,12 +65,12 @@ void Session::check_for_command() {
     incomingByte = Serial.read();
     if (incomingByte == ';') {
       process_command();
-      memset(com_buff, 0, sizeof(com_buff));
-      com_buff_count = 0;
+      memset(m_com_buff, 0, sizeof(m_com_buff));
+      m_com_buff_count = 0;
     }
     else {
-      com_buff[com_buff_count] = incomingByte;
-      com_buff_count += 1;
+      m_com_buff[m_com_buff_count] = incomingByte;
+      m_com_buff_count += 1;
     }
   }
 }
@@ -62,7 +86,10 @@ int Session::ramp_signal(int sig_in) {
 }
 
 void Session::read_pot() {
-  m_pwm = ramp_signal(analogRead(m_pot_pin));
+  int pot_sig = analogRead(m_pot_pin);
+  if (m_drive_w_pot)
+    for (int i = 0; i < NUM_MAGNETS; i++)
+      m_pwms[i] = ramp_signal(pot_sig);
 }
 
 void Session::read_temp() {
@@ -74,7 +101,9 @@ void Session::read_temp() {
 }
 
 void Session::drive_magnet() {
-  analogWrite(m_drv_pin, m_pwm);
+  for (int i = 0; i < NUM_MAGNETS; i++) {
+    analogWrite(m_drv_pins[i], m_pwms[i]);
+  }
 }
 
 void Session::print_report() {
