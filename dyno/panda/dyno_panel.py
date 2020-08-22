@@ -22,7 +22,7 @@ import math
 #Define constants
 LEXI_NUMSENSORS = 2 #RPM AND TEMPERATURE
 OLIVER_NUMSENSORS = 2 #JOULEMETER
-READ_SERIAL_ON = False
+READ_SERIAL_ON = False if arguments.get("--no_serial") else True
 loop_speed = 100 #ms
 window_width = 800
 window_height = 600
@@ -74,7 +74,7 @@ def update_labels():
             for key in data_output_dict.keys():
                 data_output_dict[key][1] = data_output_dict[key][1] + 1
         
-        text_file_data.append(str(data_output_dict))
+        text_file_data.append({str(datetime.datetime.now()):str(data_output_dict.values())})
 
     temp = list(data_output_dict.values())
     for i in range(num_vars):
@@ -222,7 +222,7 @@ push_button.bind("<Button-1>", push_config)
 
 #Create smv label
 smv_label = tk.Label(window, text="made by Bruin SuperMileage", bg=color_bg, fg=color_fg, font=font_magnet)
-smv_label.place(relx = 0.97, rely = 0.97, anchor='e')
+smv_label.place(relx = 0.99, rely = 0.97, anchor='e')
 
 window.after(loop_speed, update_labels)
 window.mainloop()
