@@ -10,8 +10,10 @@ Options:
   --no_serial   Run in debug mode without reading MCU data
 
 """
+
 from docopt import docopt
 arguments = docopt(__doc__)
+
 import tkinter as tk
 from tkinter import font
 from PIL import Image, ImageTk
@@ -87,16 +89,16 @@ def update_labels():
 def handle_click(event):
     global FLAG_RUN, text_file_data
 
-    if button["text"] == "Pause":
-        button["text"] = "Run"
+    if start_button["text"] == "Pause":
+        start_button["text"] = "Run"
         if READ_SERIAL_ON:
             driver.write('P;')
         print("Flag was set to 'P;'")
         FLAG_RUN = False
         writeFile()
         update_labels()
-    elif button["text"] == "Run":
-        button["text"] = "Pause"
+    elif start_button["text"] == "Run":
+        start_button["text"] = "Pause"
         text_file_data = []
         if READ_SERIAL_ON:
             driver.write('R;')
