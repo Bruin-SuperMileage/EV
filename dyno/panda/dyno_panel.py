@@ -182,9 +182,9 @@ dyno_title.place(relx = 0.5, rely = 0.18, anchor='center')
 
 #Create the start/stop button
 start_img = ImageTk.PhotoImage(Image.open(start_path).resize([70, 70]))
-button = tk.Button(bg = color_bg, activebackground = color_bg, text = "Run", image = start_img, borderwidth = 0)
-button.place(relx = 0.5, rely = 0.35, anchor='center')
-button.bind("<Button-1>", handle_click)
+start_button = tk.Button(bg = color_bg, activebackground = color_bg, text = "Run", image = start_img, borderwidth = 0)
+start_button.place(relx = 0.5, rely = 0.35, anchor='center')
+start_button.bind("<Button-1>", handle_click)
 #---------------------
 
 #Create labels to display sensor readings
