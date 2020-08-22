@@ -1,14 +1,36 @@
+"""Dyno Dashboard
+
+Usage:
+  dyno_panel.py
+  dyno_panel.py (-n | --no_serial) 
+  dyno_panel.py (-h | --help)
+
+Options:
+  -h --help     Show this screen.
+  --no_serial   Run in debug mode without reading MCU data
+
+"""
+from docopt import docopt
+arguments = docopt(__doc__)
 import tkinter as tk
 from tkinter import font
 from PIL import Image, ImageTk
 import serial
-import time
+import datetime
+import math
 
 #Define constants
 LEXI_NUMSENSORS = 2 #RPM AND TEMPERATURE
 OLIVER_NUMSENSORS = 2 #JOULEMETER
 READ_SERIAL_ON = False
 loop_speed = 100 #ms
+window_width = 800
+window_height = 600
+FLAG_RUN = False
+
+num_magnets = 8
+magnet_radius = 50
+default_magnet = [0,8,0,8,0,8,0,8]
 #---------------------
 
 #Images
@@ -24,7 +46,6 @@ color_label = "#B1D9DB"
 
 #Placement
 LABEL_COL1_PLACE = {'relx':0.15, 'rely':0.45}
-LABEL_COL2_PLACE = {'relx':0.55, 'rely':0.4}
 LABEL_SPACE = 0.07
 #---------------------
 
@@ -38,21 +59,22 @@ if READ_SERIAL_ON:
 
 #Update the variables for the labels
 def update_labels():
-    #Read in input from MCU sensors
-    if READ_SERIAL_ON:
-        for x in range (0, LEXI_NUMSENSORS): #read Lexi sensor data
-            val = lexi.readline().decode('ascii')
-            prefix = val[0:3]
-            data_output_dict[prefix] = float(val[5:-2])
-        for x in range (0, OLIVER_NUMSENSORS): #read Oliver sensor data
-            val = oliver.readline().decode('ascii')
-            prefix = val[0:3]
-            data_output_dict[prefix] = float(val[5:-2])
-    else:
-        for key in data_output_dict.keys():
-            data_output_dict[key][1] = data_output_dict[key][1] + 1
-    
-    text_file_data.append(str(data_output_dict))
+    if FLAG_RUN:
+        #Read in input from MCU sensors
+        if READ_SERIAL_ON:
+            for x in range (0, LEXI_NUMSENSORS): #read Lexi sensor data
+                val = lexi.readline().decode('ascii')
+                prefix = val[0:3]
+                data_output_dict[prefix] = float(val[5:-2])
+            for x in range (0, OLIVER_NUMSENSORS): #read Oliver sensor data
+                val = oliver.readline().decode('ascii')
+                prefix = val[0:3]
+                data_output_dict[prefix] = float(val[5:-2])
+        else:
+            for key in data_output_dict.keys():
+                data_output_dict[key][1] = data_output_dict[key][1] + 1
+        
+        text_file_data.append(str(data_output_dict))
 
     temp = list(data_output_dict.values())
     for i in range(num_vars):
@@ -63,18 +85,48 @@ def update_labels():
 
 #Define on_click function for button
 def handle_click(event):
+    global FLAG_RUN, text_file_data
+
     if button["text"] == "Pause":
         button["text"] = "Run"
         if READ_SERIAL_ON:
             driver.write('P;')
         print("Flag was set to 'P;'")
+        FLAG_RUN = False
         writeFile()
         update_labels()
     elif button["text"] == "Run":
         button["text"] = "Pause"
+        text_file_data = []
         if READ_SERIAL_ON:
             driver.write('R;')
+        FLAG_RUN = True
         print("Flag was set to 'R;'")
+#---------------------
+
+def push_config(event):
+    magnet_config = "magnets="
+    for i in range(num_magnets):
+        temp = magnet_tkvars[i].get()
+        if int(temp) < 0:
+            temp = "0"
+        elif int(temp) > 9:
+            temp = "9"
+        magnet_config = magnet_config + str(i) + ":00" + temp + ","
+    magnet_config = magnet_config[:-1] + ";"
+    if READ_SERIAL_ON:
+        driver.write(magnet_config)
+    print(magnet_config)
+
+    throttle = throttle_slider.get()
+    if int(throttle) < 0:
+        throttle = "0"
+    elif int(throttle) > 100:
+        throttle = "100"
+    throttle_config = "motor=" + str(throttle) + ";"
+    if READ_SERIAL_ON:
+        driver.write(throttle_config)
+    print(throttle_config)
 #---------------------
 
 #Write to text file
@@ -91,6 +143,7 @@ window.configure(bg= color_bg)
 window.geometry("800x600")
 font_title = font.Font(family="Helvetica", size=36, weight="bold")
 font_text = font.Font(family="Helvetica", size=24)
+font_magnet = font.Font(family="Helvetica", size=16, weight="bold")
 #---------------------
 
 #Initialize variables
@@ -110,6 +163,11 @@ num_vars = len(data_output_dict)
 tk_stringvars = []
 for i in range(num_vars):
     tk_stringvars.append(tk.StringVar())
+
+magnet_tkvars = []
+for i in range(num_magnets):
+    magnet_tkvars.append(tk.StringVar())
+    magnet_tkvars[i].set(str(default_magnet[i]))
 #---------------------
 
 #Create the image of the dino
@@ -124,15 +182,47 @@ label.place(relx = 0.5, rely = 0.21, anchor='center')
 
 #Create the start/stop button
 start_img = ImageTk.PhotoImage(Image.open(start_path).resize([70, 70]))
-button = tk.Button(bg = color_bg, activebackground = color_bg, text = "Pause", image = start_img, borderwidth = 0)
+button = tk.Button(bg = color_bg, activebackground = color_bg, text = "Run", image = start_img, borderwidth = 0)
 button.place(relx = 0.5, rely = 0.35, anchor='center')
 button.bind("<Button-1>", handle_click)
 #---------------------
 
 #Create labels to display sensor readings
 for i in range(int(num_vars)): #First Column
-    label1 = tk.Label(window, textvariable=tk_stringvars[i], bg=color_bg, fg=color_label, font=font_text)
-    label1.place(relx = LABEL_COL1_PLACE['relx'], rely = LABEL_COL1_PLACE['rely']+i*LABEL_SPACE, anchor='w')
+    data_label = tk.Label(window, textvariable=tk_stringvars[i], bg=color_bg, fg=color_label, font=font_text)
+    data_label.place(relx = LABEL_COL1_PLACE['relx'], rely = LABEL_COL1_PLACE['rely']+i*LABEL_SPACE, anchor='w')
+#---------------------
+
+#Create entry fields to get magnet values
+magnet_canvas = tk.Canvas(window, width=150, height=150, bg=color_bg)
+magnet_canvas.place(relx=0.75, rely=0.55, anchor="center")
+magnet_title = tk.Label(window, text="Magnets", bg=color_bg, fg=color_fg, font=font_magnet)
+magnet_canvas.create_window(75, 0, window=magnet_title)
+for i in range(num_magnets):
+    magnet_entry = tk.Entry(window, width=2, font=font_magnet, text=magnet_tkvars[i], bg=color_label)
+    x = math.cos(2*math.pi/num_magnets*i)*magnet_radius
+    y = math.sin(2*math.pi/num_magnets*i)*magnet_radius
+    magnet_canvas.create_window(x+75, y+80, window=magnet_entry)
+#---------------------
+
+#Create slider to get throttle position
+throttle_canvas = tk.Canvas(window, width=150, height=70, bg=color_bg)
+throttle_canvas.place(relx=0.75, rely=0.77, anchor="center")
+throttle_title = tk.Label(window, text="Throttle", bg=color_bg, fg=color_fg, font=font_magnet)
+throttle_canvas.create_window(75, 0, window=throttle_title)
+throttle_slider = tk.Scale(window, from_=0, to=100, orient=tk.HORIZONTAL, bg=color_label)
+throttle_canvas.create_window(75, 45, window=throttle_slider)
+#---------------------
+
+#Create the push button
+push_button = tk.Button(bg = color_bg, activebackground = color_bg, fg=color_fg, text = "Push", font=font_magnet)
+push_button.place(relx = 0.75, rely = 0.89, anchor='center')
+push_button.bind("<Button-1>", push_config)
+#---------------------
+
+#Create smv label
+smv_label = tk.Label(window, text="made by Bruin SuperMileage", bg=color_bg, fg=color_fg, font=font_magnet)
+smv_label.place(relx = 0.97, rely = 0.97, anchor='e')
 
 window.after(loop_speed, update_labels)
 window.mainloop()
