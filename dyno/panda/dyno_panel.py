@@ -139,8 +139,8 @@ def writeFile():
 
 #Create the viewable window
 window = tk.Tk()
-window.configure(bg= color_bg)
-window.geometry("800x600")
+window.configure(bg=color_bg)
+window.geometry(str(window_width)+"x"+str(window_height))
 font_title = font.Font(family="Helvetica", size=36, weight="bold")
 font_text = font.Font(family="Helvetica", size=24)
 font_magnet = font.Font(family="Helvetica", size=16, weight="bold")
@@ -173,11 +173,11 @@ for i in range(num_magnets):
 #Create the image of the dino
 dino_img = ImageTk.PhotoImage(Image.open(dino_path).resize([150, 150]))
 panel = tk.Label(window, image = dino_img, borderwidth=0)
-panel.place(relx = 0.75, rely = 0.15, anchor='center')
+panel.place(relx = 0.73, rely = 0.15, anchor='center')
 
 #Create the title of the window
-label = tk.Label(text="Project Dyno", padx=15, pady=15, bg=color_bg, fg=color_fg, font=font_title)
-label.place(relx = 0.5, rely = 0.21, anchor='center')
+dyno_title = tk.Label(text="Project Dyno", bg=color_bg, fg=color_fg, font=font_title)
+dyno_title.place(relx = 0.5, rely = 0.18, anchor='center')
 #---------------------
 
 #Create the start/stop button
