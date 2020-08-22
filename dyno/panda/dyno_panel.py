@@ -43,20 +43,20 @@ def update_labels():
         for x in range (0, LEXI_NUMSENSORS): #read Lexi sensor data
             val = lexi.readline().decode('ascii')
             prefix = val[0:3]
-            my_dict[prefix] = float(val[5:-2])
+            data_output_dict[prefix] = float(val[5:-2])
         for x in range (0, OLIVER_NUMSENSORS): #read Oliver sensor data
             val = oliver.readline().decode('ascii')
             prefix = val[0:3]
-            my_dict[prefix] = float(val[5:-2])
+            data_output_dict[prefix] = float(val[5:-2])
     else:
-        for key in my_dict.keys():
-            my_dict[key][1] = my_dict[key][1] + 1
+        for key in data_output_dict.keys():
+            data_output_dict[key][1] = data_output_dict[key][1] + 1
     
-    my_list.append(str(my_dict))
+    text_file_data.append(str(data_output_dict))
 
-    temp = list(my_dict.values())
+    temp = list(data_output_dict.values())
     for i in range(num_vars):
-        var_array[i].set(temp[i][0] + str(temp[i][1]) + temp[i][2])
+        tk_stringvars[i].set(temp[i][0] + str(temp[i][1]) + temp[i][2])
 
     window.after(loop_speed, update_labels)
 #---------------------
@@ -80,7 +80,7 @@ def handle_click(event):
 #Write to text file
 def writeFile():
     f = open("demofile.txt", "a")
-    f.write(str(my_list))
+    f.write(str(text_file_data))
     f.write('\n')
     f.close()
 #---------------------
@@ -94,8 +94,8 @@ font_text = font.Font(family="Helvetica", size=24)
 #---------------------
 
 #Initialize variables
-my_list = []
-my_dict={
+text_file_data = []
+data_output_dict = {
     'Cur' : ["Current: ", -1, " A"],
     'Vlt' : ["Voltage: ", -1, " V"],
     'Rpm' : ["RPM: ", -1, " rpm"],
@@ -105,11 +105,11 @@ my_dict={
     'Eff' : ["Efficiency: ", -1, " %"],
     'Time' : ["Time Duration: ", -1, " "]
     }
-num_vars = len(my_dict)
+num_vars = len(data_output_dict)
 
-var_array = []
+tk_stringvars = []
 for i in range(num_vars):
-    var_array.append(tk.StringVar())
+    tk_stringvars.append(tk.StringVar())
 #---------------------
 
 #Create the image of the dino
@@ -131,7 +131,7 @@ button.bind("<Button-1>", handle_click)
 
 #Create labels to display sensor readings
 for i in range(int(num_vars)): #First Column
-    label1 = tk.Label(window, textvariable=var_array[i], bg=color_bg, fg=color_label, font=font_text)
+    label1 = tk.Label(window, textvariable=tk_stringvars[i], bg=color_bg, fg=color_label, font=font_text)
     label1.place(relx = LABEL_COL1_PLACE['relx'], rely = LABEL_COL1_PLACE['rely']+i*LABEL_SPACE, anchor='w')
 
 window.after(loop_speed, update_labels)
