@@ -125,12 +125,13 @@ def push_config(event):
         driver.write(magnet_config)
     print(magnet_config)
 
-    throttle = throttle_slider.get()
-    if int(throttle) < 0:
-        throttle = "0"
-    elif int(throttle) > 100:
-        throttle = "100"
-    throttle_config = "motor=" + str(throttle) + ";"
+    throttle = int(throttle_slider.get())
+    if throttle < 0:
+        throttle = 0
+    elif throttle > 100:
+        throttle = 100
+    throttle = str(map(throttle, 0, 100, 0, 255)).zfill(3)
+    throttle_config = "motor=" + throttle + ";"
     if READ_SERIAL_ON:
         driver.write(throttle_config)
     print(throttle_config)
