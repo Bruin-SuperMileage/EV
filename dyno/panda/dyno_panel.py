@@ -106,15 +106,20 @@ def handle_click(event):
         print("Flag was set to 'R;'")
 #---------------------
 
+def map(x, in_min, in_max, out_min, out_max):
+    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
+#---------------------
+
 def push_config(event):
     magnet_config = "magnets="
     for i in range(num_magnets):
-        temp = magnet_tkvars[i].get()
-        if int(temp) < 0:
-            temp = "0"
-        elif int(temp) > 9:
-            temp = "9"
-        magnet_config = magnet_config + str(i) + ":00" + temp + ","
+        pwm = int(magnet_tkvars[i].get())
+        if pwm < 0:
+            pwm = 0
+        elif pwm > 9:
+            pwm = 9
+        pwm = str(map(pwm, 0, 9, 0, 255)).zfill(3)
+        magnet_config = magnet_config + str(i) + ":" + pwm + ","
     magnet_config = magnet_config[:-1] + ";"
     if READ_SERIAL_ON:
         driver.write(magnet_config)
