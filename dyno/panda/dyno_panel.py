@@ -222,16 +222,28 @@ throttle_slider = tk.Scale(window, from_=0, to=100, orient=tk.HORIZONTAL, bg=col
 throttle_canvas.create_window(75, 45, window=throttle_slider)
 #---------------------
 
+def check_ack():
+    if not mcu_acknowledged:
+        data = driver.read()
+        if data:
+            mcu_acknowledged = True
+            print("ACK=SUCCESS;")
+        
+def mcu_flag(event):
+    mcu_acknowledged = False
+       
+#---------------------
 #Create the push button
 push_button = tk.Button(bg = color_bg, activebackground = color_bg, fg=color_fg, text = "Push", font=font_magnet)
 push_button.place(relx = 0.75, rely = 0.89, anchor='center')
 push_button.bind("<Button-1>", push_config)
+push_button.bind("<Button-1>", mcu_flag)
 #---------------------
 
 #Create smv label
 smv_label = tk.Label(window, text="made by Bruin SuperMileage", bg=color_bg, fg=color_fg, font=font_magnet)
 smv_label.place(relx = 0.99, rely = 0.97, anchor='e')
 
-window.after(loop_speed, update_labels)
+window.after(loop_speed, update_labels, check_ack)
 window.mainloop()
 #---------------------
