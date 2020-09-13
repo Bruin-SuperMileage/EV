@@ -18,6 +18,6 @@ EV
 	|__ brushed
 	|__ brushless
         |__ throttle
-        |__ variable_control.*
-        |__ button_control.*
+            |__ variable_control.*
+            |__ button_control.*
 ```
