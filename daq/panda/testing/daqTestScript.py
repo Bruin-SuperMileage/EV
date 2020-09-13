@@ -16,7 +16,7 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 #declare the dictionary to store all input data
-my_dict={
+inputs_dict={
     'Cur' : -1,'Vlt' : -1,'Thr' : -1,'Pwr' : -1,
     'Spd' : -1,'Lng' : -1,'Lat' : -1,'Alt' : -1,'Tem' : -1,
     'GyX' : -1,'GyY' : -1,'GyZ' : -1,'AcX' : -1,'AcY' : -1,'AcZ' : -1,'MaX' : -1,'MaY' : -1,'MaZ' : -1,
@@ -45,17 +45,7 @@ print(milliseconds() - start)
 #Account for 1600 ms delay in Arduino connection
 sleep(1.6)
 
-numValues = 22;
 n = 0
-
-trialName = db.child("Latest Trial").get() #trial name naming
-trialName = trialName.val().split()
-num = int(trialName[1]) + 1
-trialName = trialName[0] + " " + (str(num))
-
-now = datetime.now() #set time
-timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
-
 while(n<50):
   now = datetime.now() #set time
   current_time = now.strftime("%H:%M:%S:%f") [:-3] #set current time
@@ -70,44 +60,45 @@ while(n<50):
   now = datetime.now() #set time
   timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
 
+  numValues = 22; #expected number of data inputs
   j = 0 #iterating variable for traversing data string
   for i in range (0, numValues):
     prefix = text[j:j+3] #KEY
     data = text[j+4:j+6] #VALUE
-    my_dict[prefix] = float(data) #may fail on first run, simply re-run
+    inputs_dict[prefix] = float(data) #may fail on first run, simply re-run
     j+=6 #assumes 2 digit data values
 
   #push collected data to database
   db.child(trialName).child(timeName).update({
   "gps": 
-      {"latitude": my_dict['Lat'],
-      "longitude": my_dict['Lng']},
+      {"latitude": inputs_dict['Lat'],
+      "longitude": inputs_dict['Lng']},
   "joulemeter": 
-      {"current": my_dict['Cur'],
-      "power": my_dict['Pwr'],
-      "voltage": my_dict['Vlt']},
+      {"current": inputs_dict['Cur'],
+      "power": inputs_dict['Pwr'],
+      "voltage": inputs_dict['Vlt']},
   "gyroscope":
-      {"GyX": my_dict['GyX'],
-      "GyY": my_dict['GyY'],
-      "GyZ": my_dict['GyZ'],
-      "heading": my_dict['Hea'],
-      "pitch": my_dict['Pit'],
-      "roll": my_dict['Rol']},
+      {"GyX": inputs_dict['GyX'],
+      "GyY": inputs_dict['GyY'],
+      "GyZ": inputs_dict['GyZ'],
+      "heading": inputs_dict['Hea'],
+      "pitch": inputs_dict['Pit'],
+      "roll": inputs_dict['Rol']},
   "environment":
-      {"altitude": my_dict['Alt'],
-      "temperature": my_dict['Tem']},
+      {"altitude": inputs_dict['Alt'],
+      "temperature": inputs_dict['Tem']},
   "hall-effect":
-      {"rpm": my_dict['Rpm'],
-      "throttle": my_dict['Thr'],
-      "speed": my_dict['Spd']},
+      {"rpm": inputs_dict['Rpm'],
+      "throttle": inputs_dict['Thr'],
+      "speed": inputs_dict['Spd']},
   "accelerometer":
-      {"acceleration x": my_dict['AcX'],
-      "acceleration y": my_dict['AcY'],
-      "acceleration z": my_dict['AcZ']},
+      {"acceleration x": inputs_dict['AcX'],
+      "acceleration y": inputs_dict['AcY'],
+      "acceleration z": inputs_dict['AcZ']},
   "magnetometer":
-      {"MagX": my_dict['MaX'],
-      "MagY": my_dict['MaY'],
-      "MagZ": my_dict['MaZ']},
+      {"MagX": inputs_dict['MaX'],
+      "MagY": inputs_dict['MaY'],
+      "MagZ": inputs_dict['MaZ']},
   "driver": #required by website; will be removed
       {"image": "./images/Caroline.jpg",
       "message": "I Believe In You!!!",
