@@ -2,7 +2,7 @@
 Here is the current skeleton that we are building towards. Please put up your pull requests accordingly, or reach out to EV Leadership for help on choosing the right home for your code!
 ```
 EV
-|__ central_running_module.py --mode=mode
+|__ central_running_module.py --mode=mode --config=config
 |__ daq
 |	|__ microcontroller
 |	|	|__ sensors
