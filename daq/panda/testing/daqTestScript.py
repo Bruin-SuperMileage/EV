@@ -47,7 +47,21 @@ sleep(1.6)
 
 numValues = 22;
 n = 0
+
+trialName = db.child("Latest Trial").get() #trial name naming
+trialName = trialName.val().split()
+num = int(trialName[1]) + 1
+trialName = trialName[0] + " " + (str(num))
+
+now = datetime.now() #set time
+timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
+
 while(n<50):
+  now = datetime.now() #set time
+  current_time = now.strftime("%H:%M:%S:%f") [:-3] #set current time
+  previousTime = timeName
+  timeName = current_time
+  
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
   print(milliseconds() - start)
@@ -61,9 +75,7 @@ while(n<50):
     prefix = text[j:j+3] #KEY
     data = text[j+4:j+6] #VALUE
     my_dict[prefix] = float(data)
-    j+=6
-
-  db.update({"Latest Trial": trialName})
+    j+=6 #assumes 2 digit data values
 
   db.child(trialName).child(timeName).update({
   "gps": 
@@ -74,12 +86,12 @@ while(n<50):
       "power": my_dict['Pwr'],
       "voltage": my_dict['Vlt']},
   "IMU":
-      {"GyX": my_dict['GyX'],
-      "GyY": my_dict['GyY'],
-      "GyZ": my_dict['GyZ'],
-      "heading": my_dict['Hea'],
-      "pitch": my_dict['Pit'],
-      "roll": my_dict['Rol']},
+      {"MagX": my_dict['GyX'],
+      "MagY": my_dict['GyY'],
+      "MagZ": my_dict['GyZ'],
+      "Heading": my_dict['Hea'],
+      "Pitch": my_dict['Pit'],
+      "Roll": my_dict['Rol']},
   "environment":
       {"altitude": my_dict['Alt'],
       "temperature": my_dict['Tem']},
@@ -91,11 +103,26 @@ while(n<50):
       {"acceleration x": my_dict['AcX'],
       "acceleration y": my_dict['AcY'],
       "acceleration z": my_dict['AcZ']},
-  "magenetometer":
+  "magnetometer":
       {"MagX": my_dict['MaX'],
       "MagY": my_dict['MaY'],
-      "MagZ": my_dict['MaZ']}
+      "MagZ": my_dict['MaZ']},
+  "driver": #required by website; will be removed
+      {"image": "./images/Caroline.jpg",
+      "message": "I Believe In You!!!",
+      "name": "Caroline",
+      "phone": "999-999-999",
+      "social": "@CarolineDriver"},
+  "track":
+      {"name": "Parking Garage",
+      "trial": num}
   })
+
+  #Updates trial information only after successful push
+  db.update(
+  {"Latest Trial": trialName,
+  "Latest Time": timeName, 
+  "Previous Time": previousTime})
 
   n += 1
 
