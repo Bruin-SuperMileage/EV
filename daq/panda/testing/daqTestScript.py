@@ -74,24 +74,25 @@ while(n<50):
   for i in range (0, numValues):
     prefix = text[j:j+3] #KEY
     data = text[j+4:j+6] #VALUE
-    my_dict[prefix] = float(data)
+    my_dict[prefix] = float(data) #may fail on first run, simply re-run
     j+=6 #assumes 2 digit data values
 
+  #push collected data to database
   db.child(trialName).child(timeName).update({
   "gps": 
-      {"lat": my_dict['Lat'],
-      "long": my_dict['Lng']},
+      {"latitude": my_dict['Lat'],
+      "longitude": my_dict['Lng']},
   "joulemeter": 
       {"current": my_dict['Cur'],
       "power": my_dict['Pwr'],
       "voltage": my_dict['Vlt']},
-  "IMU":
-      {"MagX": my_dict['GyX'],
-      "MagY": my_dict['GyY'],
-      "MagZ": my_dict['GyZ'],
-      "Heading": my_dict['Hea'],
-      "Pitch": my_dict['Pit'],
-      "Roll": my_dict['Rol']},
+  "gyroscope":
+      {"GyX": my_dict['GyX'],
+      "GyY": my_dict['GyY'],
+      "GyZ": my_dict['GyZ'],
+      "heading": my_dict['Hea'],
+      "pitch": my_dict['Pit'],
+      "roll": my_dict['Rol']},
   "environment":
       {"altitude": my_dict['Alt'],
       "temperature": my_dict['Tem']},
@@ -127,14 +128,10 @@ while(n<50):
   n += 1
 
 
-#Pairs with ardmil5
+#Pairs with daqTest.ino
 
-#non dictionary variation: 6000 ms per push
-#with dictionary: 500-630 ms per push, excluding outliers
-
+#takes approx 450-630 ms per push, excluding outliers
 #get new trial number takes approx 900 ms
-
-#suggestion: implement !Serial to avoid use of sleep
 
 #Pyrebase4 Library
 #https://github.com/nhorvath/Pyrebase4
