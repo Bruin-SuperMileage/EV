@@ -73,7 +73,7 @@ while(n<50):
       {"current": my_dict['Cur'],
       "power": my_dict['Pwr'],
       "voltage": my_dict['Vlt']},
-  "gyroscope":
+  "IMU":
       {"GyX": my_dict['GyX'],
       "GyY": my_dict['GyY'],
       "GyZ": my_dict['GyZ'],
