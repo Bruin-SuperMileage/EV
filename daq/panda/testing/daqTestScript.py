@@ -45,8 +45,8 @@ print(milliseconds() - start)
 #Account for 1600 ms delay in Arduino connection
 sleep(1.6)
 
-n = 0
-while(n<50):
+num_runs = 0
+while(num_runs<50):
   now = datetime.now() #set time
   current_time = now.strftime("%H:%M:%S:%f") [:-3] #set current time
   previousTime = timeName
@@ -116,7 +116,7 @@ while(n<50):
   "Latest Time": timeName, 
   "Previous Time": previousTime})
 
-  n += 1
+  num_runs += 1
 
 
 #Pairs with daqTest.ino
