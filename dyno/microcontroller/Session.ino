@@ -98,11 +98,12 @@ void Session::check_for_command()
       if (process_command())
       {
         m_serial_stats.m_commands_parsed += 1;
-        Serial.write("ack;");
+        Serial.write("ack=200;");
       }
       else
       {
         m_serial_stats.m_commands_not_parsed += 1;
+        Serial.write("ack=400;");
       }
       memset(m_com_buff, 0, sizeof(m_com_buff));
       m_com_buff_count = 0;
