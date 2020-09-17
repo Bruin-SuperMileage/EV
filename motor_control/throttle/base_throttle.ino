@@ -3,6 +3,7 @@
 Throttle::Throttle(const int &pin)
 {
     m_sensor_pin = pin;
+    pinMode(m_sensor_pin, INPUT);
     m_raw_value = 0;
     m_motor_value = 0;
 }
