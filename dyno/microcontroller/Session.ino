@@ -7,10 +7,12 @@
 Session::Session(const int POT_PIN, const int *DRV_PINS, bool paused, bool drive_w_pot)
 {
   m_pot_pin = POT_PIN;
+  pinMode(m_pot_pin, INPUT);
   for (int i = 0; i < NUM_MAGNETS; i++)
   {
     m_drv_pins[i] = DRV_PINS[i];
     m_pwms[i] = 0;
+    pinMode(m_drv_pins[i], OUTPUT);
   }
   memset(m_com_buff, 0, sizeof(m_com_buff));
   m_com_buff_count = 0;
@@ -26,6 +28,7 @@ void Session::init_temp_sense(const int *TEMP_PINS)
   for (int i = 0; i < NUM_TEMP_SENSE; i++)
   {
     m_temp_pins[i] = TEMP_PINS[i];
+    pinMode(m_temp_pins[i], INPUT);
   }
 }
 
