@@ -1,15 +1,12 @@
 #ifndef CURRENT_SENSOR_H
 #define CURRENT_SENSOR_H
 
-class Current_Sensor : public Sensor
+class CurrentSensor : public Sensor
 {
 public:
-    Current_Sensor(const int &pin);
+    CurrentSensor(const int &pin);
 
-    virtual void read_sensor_value();
-
-private:
-
+    void read_sensor_value();
 };
 
 #endif //CURRENT_SENSOR
