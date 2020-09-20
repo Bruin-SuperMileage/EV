@@ -46,7 +46,7 @@ print(milliseconds() - start)
 sleep(1.6)
 
 num_runs = 0
-while(num_runs<50):
+while(num_runs < 50):
   
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
