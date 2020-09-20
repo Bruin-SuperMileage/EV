@@ -81,7 +81,7 @@ def update_labels():
     temp = list(data_output_dict.values())
     for i in range(num_vars):
         tk_stringvars[i].set(temp[i][0] + str(temp[i][1]) + temp[i][2])
-
+    read_data();
     window.after(loop_speed, update_labels)
 #---------------------
 
@@ -135,6 +135,7 @@ def push_config(event):
     if READ_SERIAL_ON:
         driver.write(throttle_config)
     print(throttle_config)
+    mcu_flag
 #---------------------
 
 #Write to text file
@@ -222,13 +223,11 @@ throttle_slider = tk.Scale(window, from_=0, to=100, orient=tk.HORIZONTAL, bg=col
 throttle_canvas.create_window(75, 45, window=throttle_slider)
 #---------------------
 
-def check_ack():
+def read_data():
     if not mcu_acknowledged:
         data = driver.read()
-        if data:
+        if "ack=200" in data:
             mcu_acknowledged = True
-            print("ACK=SUCCESS;")
-        
 def mcu_flag(event):
     mcu_acknowledged = False
        
@@ -237,13 +236,12 @@ def mcu_flag(event):
 push_button = tk.Button(bg = color_bg, activebackground = color_bg, fg=color_fg, text = "Push", font=font_magnet)
 push_button.place(relx = 0.75, rely = 0.89, anchor='center')
 push_button.bind("<Button-1>", push_config)
-push_button.bind("<Button-1>", mcu_flag)
 #---------------------
 
 #Create smv label
 smv_label = tk.Label(window, text="made by Bruin SuperMileage", bg=color_bg, fg=color_fg, font=font_magnet)
 smv_label.place(relx = 0.99, rely = 0.97, anchor='e')
 
-window.after(loop_speed, update_labels, check_ack)
+window.after(loop_speed, update_labels)
 window.mainloop()
 #---------------------
