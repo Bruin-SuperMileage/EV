@@ -81,7 +81,7 @@ def update_labels():
     temp = list(data_output_dict.values())
     for i in range(num_vars):
         tk_stringvars[i].set(temp[i][0] + str(temp[i][1]) + temp[i][2])
-    read_data();
+    read_data;
     window.after(loop_speed, update_labels)
 #---------------------
 
@@ -222,14 +222,13 @@ throttle_canvas.create_window(75, 0, window=throttle_title)
 throttle_slider = tk.Scale(window, from_=0, to=100, orient=tk.HORIZONTAL, bg=color_label)
 throttle_canvas.create_window(75, 45, window=throttle_slider)
 #---------------------
-
+def mcu_flag(event):
+    mcu_acknowledged = False
 def read_data():
     if not mcu_acknowledged:
         data = driver.read()
         if "ack=200" in data:
             mcu_acknowledged = True
-def mcu_flag(event):
-    mcu_acknowledged = False
        
 #---------------------
 #Create the push button
