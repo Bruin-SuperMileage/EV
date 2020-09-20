@@ -47,10 +47,6 @@ sleep(1.6)
 
 num_runs = 0
 while(num_runs<50):
-  now = datetime.now() #set time
-  current_time = now.strftime("%H:%M:%S:%f") [:-3] #set current time
-  previousTime = timeName
-  timeName = current_time
   
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
@@ -99,22 +95,13 @@ while(num_runs<50):
       {"MagX": inputs_dict['MaX'],
       "MagY": inputs_dict['MaY'],
       "MagZ": inputs_dict['MaZ']},
-  "driver": #required by website; will be removed
-      {"image": "./images/Caroline.jpg",
-      "message": "I Believe In You!!!",
-      "name": "Caroline",
-      "phone": "999-999-999",
-      "social": "@CarolineDriver"},
-  "track":
-      {"name": "Parking Garage",
-      "trial": num}
   })
 
   #Updates trial information only after successful push
   db.update(
   {"Latest Trial": trialName,
-  "Latest Time": timeName, 
-  "Previous Time": previousTime})
+  "Latest Time": timeName,
+  "Running": "True"})
 
   num_runs += 1
 
