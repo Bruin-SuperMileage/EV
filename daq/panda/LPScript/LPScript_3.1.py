@@ -26,31 +26,19 @@ inputs_dict={
 #Begin listening to a device on the specified port (Windows)
 ser = serial.Serial('/dev/cu.usbmodem14101', baudrate = 9600, timeout = 0.1)
 
-#Define function to get current time in milliseconds
-milliseconds = lambda: int(time() * 1000)
-
-#Get current time - START NOW
-start = milliseconds()
-
 #Get the new trial number
 trialName = db.child("Latest Trial").get() #trial name naming
 trialName = trialName.val().split()
 num = int(trialName[1]) + 1
 trialName = trialName[0] + " " + (str(num))
 
-#See how much time has elapsed since START NOW
-print("Start here:")
-print(milliseconds() - start)
-
 #Account for 1600 ms delay in Arduino connection
 sleep(1.6)
 
-num_runs = 0
-while(num_runs < 50):
+while(True):
   
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
-  print(milliseconds() - start)
 
   #Setting the time for each trial
   now = datetime.now() #set time
