@@ -21,3 +21,8 @@ int Throttle::get_motor_value() const
 {
     return m_motor_value;
 }
+
+int Throttle::get_pin()const 
+{
+    return m_sensor_pin;
+}
