@@ -4,7 +4,7 @@
 class Throttle
 {
 public:
-    Throttle(const int &pin);
+    Throttle(const int &pin, bool digital = false);
 
     virtual void compute_motor_value() = 0; // this needs to be implemented differently for variable/button throttle
 
@@ -16,6 +16,7 @@ private:
     int m_raw_value;
     int m_motor_value;
     int m_sensor_pin;
+    bool m_digital_read;
 };
 
 #endif
