@@ -106,7 +106,7 @@ while(num_runs < 50):
   num_runs += 1
 
 
-#Pairs with daqTest.ino
+#Pairs with test.ino
 
 #takes approx 450-630 ms per push, excluding outliers
 #get new trial number takes approx 900 ms
