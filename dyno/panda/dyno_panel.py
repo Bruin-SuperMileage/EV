@@ -225,7 +225,7 @@ throttle_canvas.create_window(75, 45, window=throttle_slider)
 def check_acknowledge():
     if not mcu_acknowledged:
         data = driver.read()
-        if ack=200;
+        if ack = "200;":
             mcu_acknowledged = True
        
 #---------------------
