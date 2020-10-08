@@ -9,7 +9,7 @@ const double maxVoltage = 4.2;
 class VariableThrottle: public Throttle{
     public:
     VariableThrottle(const int &pin);
-    virtual int compute_motor_value() override;
+    void compute_motor_value();
 };
 
 #endif
