@@ -11,9 +11,11 @@ public:
     void read_sensor_value();
     int get_raw_value() const; // should only be used to debug
     int get_motor_value() const;
+
 private:
     int m_sensor_pin;
     bool m_digital_read;
+
 protected:
     int m_raw_value;
     int m_motor_value;
