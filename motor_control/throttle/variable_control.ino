@@ -8,15 +8,14 @@ void VariableThrottle::compute_motor_value()
    * Reads the throttle input from analog signal,
    * Returns 0~100
    */
-    int throttleReading = get_raw_value();
     // Throttle cutoff threshold
-    if (throttleReading < minVoltage * 100)
+    if (m_raw_value < minVoltage * 100)
     {
         m_motor_value = 0;
     }
-    else if (throttleReading < maxVoltage * 100)
+    else if (m_raw_value < maxVoltage * 100)
     {
-        m_motor_value = map(throttleReading, minVoltage * 100, maxVoltage * 100, 0, 100);
+        m_motor_value = map(m_raw_value, minVoltage * 100, maxVoltage * 100, 0, 100);
     }
     else
     {
