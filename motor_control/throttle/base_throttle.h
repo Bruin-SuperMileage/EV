@@ -13,10 +13,12 @@ public:
     int get_motor_value() const;
 
 private:
-    int m_raw_value;
-    int m_motor_value;
     int m_sensor_pin;
     bool m_digital_read;
+
+protected:
+    int m_raw_value;
+    int m_motor_value;
 };
 
 #endif
