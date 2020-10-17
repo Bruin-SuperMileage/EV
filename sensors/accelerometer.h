@@ -1,7 +1,7 @@
 #pragma once
-#include "base_sensor.h"
+#include "cartesian_sensor.h"
 
-class Accelerometer: public Sensor
+class Accelerometer: public Cartesian_Sensor
 {
 public:
     Accelerometer(const int &pin);
