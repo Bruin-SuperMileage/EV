@@ -18,8 +18,14 @@ void Accelerometer::read_sensor_value() {
   
   // Now we can use the ax, ay, and az variables as we please.
   // Either use them as raw ADC values, or calculated in g's.
-  m_raw_x = accelerometer.ax, m_raw_y = accelerometer.ay, m_raw_z = accelerometer.az;
-  m_sensor_x = accelerometer.calcAccel(m_raw_x), m_sensor_y = accelerometer.calcAccel(m_raw_y), m_sensor_z = accelerometer.calcAccel(m_raw_z);
+  m_raw_x = accelerometer.ax;
+  m_raw_y = accelerometer.ay;
+  m_raw_z = accelerometer.az;
+  
+  m_sensor_x = accelerometer.calcAccel(m_raw_x);
+  m_sensor_y = accelerometer.calcAccel(m_raw_y);
+  m_sensor_z = accelerometer.calcAccel(m_raw_z);
+  
   m_raw_value = compute_magnitude(m_raw_x, m_raw_y, m_raw_z);
   m_sensor_value = compute_magnitude(m_sensor_x, m_sensor_y, m_sensor_z);
 }

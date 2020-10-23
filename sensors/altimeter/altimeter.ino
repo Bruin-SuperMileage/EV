@@ -15,7 +15,7 @@ void Altimeter::read_sensor_value() {
   altimeter.enableEventFlags(); // Enable all three pressure and temp even
 
   // readAltitude() - m
-  // readAltitudeFt() - Ft
+  // readAltitudeFt() - ft
   m_raw_value = altimeter.readAltitude();
   m_sensor_value = altimeter.readAltitude();
 }

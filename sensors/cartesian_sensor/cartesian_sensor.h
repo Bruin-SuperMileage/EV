@@ -10,6 +10,14 @@ public:
 
     double compute_magnitude(double x, double y, double z);
 
+    double get_raw_x() const;
+    double get_raw_y() const;
+    double get_raw_z() const;
+
+    double get_sensor_x() const;
+    double get_sensor_y() const;
+    double get_sensor_z() const;
+
 protected:
 	double m_raw_x;
 	double m_raw_y;

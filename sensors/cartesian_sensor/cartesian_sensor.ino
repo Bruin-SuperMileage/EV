@@ -9,3 +9,27 @@ Cartesian_Sensor::Cartesian_Sensor(const int &pin): Sensor(&pin) {
 double Cartesian_Sensor::compute_magnitude(double x, double y, double z) {
   return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
+
+double Cartesian_Sensor::get_raw_x() {
+  return m_raw_x;
+}
+
+double Cartesian_Sensor::get_raw_y() {
+  return m_raw_y;
+}
+
+double Cartesian_Sensor::get_raw_z() {
+  return m_raw_z;
+}
+
+double Cartesian_Sensor::get_sensor_x() {
+  return m_sensor_x;
+}
+
+double Cartesian_Sensor::get_sensor_y() {
+  return m_sensor_y;
+}
+
+double Cartesian_Sensor::get_sensor_z() {
+  return m_sensor_z;
+}
