@@ -9,8 +9,8 @@ public:
 	void read_sensor_value();
 
 	long get_latitude() const;
-    long get_longitude() const;
-    long get_speed() const;
+	long get_longitude() const;
+	long get_speed() const;
 
 protected:
 	long m_latitude;
