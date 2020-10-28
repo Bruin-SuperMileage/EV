@@ -5,7 +5,7 @@
 
 LSM9DS1 accelerometer;
 
-Accelerometer::Accelerometer(const int &pin): Cartesian_Sensor(&pin) {}
+Accelerometer::Accelerometer(const int &pin): Cartesian_Sensor(pin) {}
 
 void Accelerometer::read_sensor_value() {
   // with no arguments, this uses default addresses (AG:0x6B, M:0x1E) and i2c port (Wire).

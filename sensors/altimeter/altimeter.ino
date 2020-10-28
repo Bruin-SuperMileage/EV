@@ -5,7 +5,7 @@
 
 MPL3115A2 altimeter;
 
-Altimeter::Altimeter(const int &pin): Sensor(&pin) {}
+Altimeter::Altimeter(const int &pin): Sensor(pin) {}
 
 void Altimeter::read_sensor_value() {
   altimeter.begin();

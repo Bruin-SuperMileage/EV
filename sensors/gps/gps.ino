@@ -4,7 +4,7 @@
 
 SFE_UBLOX_GPS gps;
 
-GPS::GPS(const int &pin): Sensor(&pin) {
+GPS::GPS(const int &pin): Sensor(pin) {
   m_latitude = 0;
   m_longitude = 0;
   m_speed = 0;
