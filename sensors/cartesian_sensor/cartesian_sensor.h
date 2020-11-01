@@ -1,6 +1,12 @@
 #pragma once
 #include "base_sensor.h"
 
+struct Cartesian_Coordinates {
+	double x;
+	double y;
+	double z;
+};
+
 class Cartesian_Sensor: public Sensor
 {
 public:
@@ -10,12 +16,10 @@ public:
 
     double compute_magnitude(double x, double y, double z);
 
-protected:
-	double m_raw_x;
-	double m_raw_y;
-	double m_raw_z;
+    Cartesian_Coordinates get_raw_coordinates();
+    Cartesian_Coordinates get_sensor_coordinates();
 
-	double m_sensor_x;
-	double m_sensor_y;
-	double m_sensor_z;
+protected:
+	Cartesian_Coordinates m_raw;
+	Cartesian_Coordinates m_sensor;
 };
