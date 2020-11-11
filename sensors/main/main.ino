@@ -14,16 +14,17 @@ void setup() {
   Wire.begin(0x60);        // Join i2c bus
   Wire.begin(0x6A);        // Join i2c bus
   Wire.begin(0x6B);        // Join i2c bus
-  Wire.begin(0x42);        // Join i2c bus
   Serial.begin(9600);  // Start serial for output
 
   //Create sensors
-  const int num_sensors = 4;
+  const int num_sensors = 5;
+  
   accelerometer* myAccelerometer = new accelerometer(0x60);
   altimeter* myAltimeter = new altimeter(0x6A);
   gps* myGps = new gps(0x6B);
-  gyroscope* myGyroscope = new gyroscope(0x42);
-  base_sensor* mySensors[num_sensors] = {myAccelerometer, myAltimeter, myGps, myGyroscope};
+  gyroscope* myGyroscope = new gyroscope(0x60);
+  thermometer* myThermometer = new thermometer(0x6A);
+  base_sensor* mySensors[num_sensors] = {myAccelerometer, myAltimeter, myGps, myGyroscope, myThermometer};
 }
 
 void loop() {
@@ -74,7 +75,7 @@ void print_all_sensors() {
   Serial.print("Alt:");
   Serial.print(myAltimeter.get_sensor_value());
   Serial.print("Tem:");
-  Serial.print(rand() % 90 + 10); 
+  Serial.print(myThermometer.get_sensor_value()); 
   
   Serial.print("Rpm:");
   Serial.print(rand() % 90 + 10);

@@ -16,8 +16,8 @@ void Gyroscope::read_sensor_value() {
     gyroscope.readGyro();
   }
   
-  // Now we can use the ax, ay, and az variables as we please.
-  // Either use them as raw ADC values, or calculated in g's.
+  // Now we can use the gx, gy, and gz variables as we please.
+  // Either use them as raw ADC values, or calculated in DPS.
   m_raw.x = gyroscope.gx;
   m_raw.y = gyroscope.gy;
   m_raw.z = gyroscope.gz;
