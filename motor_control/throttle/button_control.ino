@@ -17,7 +17,7 @@ int ButtonThrottle::mappingFunction(int time_pressed, m_map_type mapType)
     if (time_pressed <= m_timeToFull)
     {
       double time_pressed2 = time_pressed;
-      double m_timeToFull2 = m_timeToFull;
+      double m_timeToFull2 = m_timeToFull2;
       return std::pow(time_pressed2 / m_timeToFull2, 2) * 100; // This function uses m_timeToFull to create a dependency on what time we pick and creates an exponential to the power of the 2 with the ratio
     }
     else

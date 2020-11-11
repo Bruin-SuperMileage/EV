@@ -15,9 +15,10 @@ EV
 |	|__ microcontroller
 |	|__ panda
 |__ motor_control
-	|__ brushed
-	|__ brushless
-        |__ throttle
-            |__ variable_control.*
-            |__ button_control.*
+|	|__ brushed
+|	|__ brushless
+|       |__ throttle
+|           |__ variable_control.*
+|           |__ button_control.*
+|__ sensors
 ```
