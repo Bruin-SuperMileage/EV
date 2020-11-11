@@ -14,9 +14,37 @@ int ButtonThrottle::mappingFunction(int time_pressed, m_map_type mapType)
   }
   if (mapType == EXPONENTIAL)
   {
+    if (time_pressed <= m_timeToFull)
+    {
+      double time_pressed2 = time_pressed;
+      double m_timeToFull2 = m_timeToFull;
+      return std::pow(time_pressed2 / m_timeToFull2, 2) * 100; // This function uses m_timeToFull to create a dependency on what time we pick and creates an exponential to the power of the 2 with the ratio
+    }
+    else
+    {
+      return 100;
+    }
   }
   if (mapType == LOGARITHMIC)
   {
+    if (time_pressed < m_timeToFull)
+    {
+      double temp_time_pressed = time_pressed;
+      double ratio = 0;
+      ratio = temp_time_pressed / 1000;
+      if (ratio == 0)
+      {
+        return 0;
+      }
+      if (std::exp(ratio) <= 100)
+      {
+        return std::exp(ratio); //This function has no reliance on m_timeToFull, it simply follows an e exponential curve up til 100. Takes about 4.6 seconds to reach max speed
+      }
+    }
+    else
+    {
+      return 100;
+    }
   }
 }
 
