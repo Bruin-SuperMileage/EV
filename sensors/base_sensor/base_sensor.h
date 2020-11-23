@@ -7,7 +7,7 @@ public:
     Sensor(const int &pin);
 
     virtual void read_sensor_value() = 0; // this needs to be implemented differently for each sensor
-
+    virtual void init_sensor(const int pin) = 0;
     double get_raw_value() const; // should only be used to debug
     double get_sensor_value() const;
 
