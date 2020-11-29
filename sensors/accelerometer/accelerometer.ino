@@ -28,4 +28,8 @@ void Accelerometer::read_sensor_value() {
   
   m_raw_value = compute_magnitude(m_raw.x, m_raw.y, m_raw.z);
   m_sensor_value = compute_magnitude(m_sensor.x, m_sensor.y, m_sensor.z);
+  
+  values.val1.value=rand() % 90 + 10;
+  values.val2.value=rand() % 90 + 10;
+  values.val2.value=rand() % 90 + 10;
 }
