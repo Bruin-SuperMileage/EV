@@ -11,6 +11,7 @@ GPS::GPS(const int &pin): Sensor(pin) {
 }
 
 void GPS::read_sensor_value() {
+  values.val3.value=myGps.get_speed();
   if (myGPS.begin() == false) //Connect to the Ublox module using Wire port
   {
     Serial.println(F("Ublox GPS not detected at default I2C address. Please check wiring. Freezing."));
