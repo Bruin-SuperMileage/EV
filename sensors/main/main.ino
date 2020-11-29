@@ -44,6 +44,15 @@ void print_all_sensors() {
 
   //expect precision issues to # of digits
   //python script currently expects 2 digits per datum
+  
+  for (int i=0; i<num_sensors; i++){
+    Serial.print(mySensors[i].values.val1.name);
+    Serial.print(mySensors[i].values.val1.value);
+    Serial.print(mySensors[i].values.val2.name);
+    Serial.print(mySensors[i].values.val2.value);
+    Serial.print(mySensors[i].values.val3.name);
+    Serial.print(mySensors[i].values.val3.value);
+  }//so far, Accelerometer, GPS and Gyroscope have this implementation
 
   Serial.print("Lat:");
   Serial.print(myGps.get_latitude());
@@ -56,7 +65,7 @@ void print_all_sensors() {
   Serial.print(rand() % 90 + 10);
   Serial.print("Vlt:");
   Serial.print(rand() % 90 + 10);
-
+  
   Cartesian_Coordinates GyCoordinates = myGyroscope.get_sensor_coordinates();
   Serial.print("GyX:");
   Serial.print(GyCoordinates.x);
@@ -65,25 +74,11 @@ void print_all_sensors() {
   Serial.print("GyZ:");
   Serial.print(GyCoordinates.z);
   
-  Serial.print("Hea:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("Pit:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("Rol:");
-  Serial.print(rand() % 90 + 10);
-  
   Serial.print("Alt:");
   Serial.print(myAltimeter.get_sensor_value());
   Serial.print("Tem:");
   Serial.print(myThermometer.get_sensor_value()); 
   
-  Serial.print("Rpm:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("Thr:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("Spd:");
-  Serial.print(myGps.get_speed());
-
   Cartesian_Coordinates AcCoordinates = myAccelerometer.get_sensor_coordinates();
   Serial.print("AcX:");
   Serial.print(AcCoordinates.x);
@@ -92,10 +87,4 @@ void print_all_sensors() {
   Serial.print("AcZ:");
   Serial.print(AcCoordinates.z);
 
-  Serial.print("MaX:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("MaY:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("MaZ:");
-  Serial.println(rand() % 90 + 10);
 }
