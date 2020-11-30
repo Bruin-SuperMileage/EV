@@ -47,14 +47,12 @@ void setup() {
   initMotor();
 //  Serial.begin(9600);
   if(rampingOption){
-    Linear ramping(RAMP_SPD);
-    ramp = &ramping;
+    ramp = new Linear(RAMP_SPD);
 //    Serial.print("Linear Ramping Testing with RAMP_SPD: ");
 //    Serial.println(RAMP_SPD);
   } 
   else{
-    PD ramping(Kp, Kd);
-    ramp = &ramping;
+    ramp = PD(Kp, Kd);
 //    Serial.print("PD Ramping Testing with Kp: ");
 //    Serial.print(Kp);
 //    Serial.print(", Kd: ");
