@@ -3,7 +3,7 @@
 
 class data_value{
     string name = 0;
-    double value = rand() % 90 + 10;
+    double value = -1;
 }
 
 
