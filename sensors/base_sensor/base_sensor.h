@@ -5,11 +5,6 @@ class data_value{
     string name = 0;
     double value = rand() % 90 + 10;
 }
-class data_set{  
-    data_value val1;
-    data_value val2;
-    data_value val3;
-}
 
 
 class Sensor
@@ -26,7 +21,7 @@ protected:
     double m_raw_value;
     double m_sensor_value;
     int m_sensor_pin;
-    data_set values;
+    data_value list_of_values[3];
 };
 
 #endif //BASE_SENSOR
