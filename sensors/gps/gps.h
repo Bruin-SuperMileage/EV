@@ -12,9 +12,9 @@ public:
 	long get_longitude() const;
 	long get_speed() const;
 	
-	values.val1.name="Rpm:";
-	values.val2.name="Thr:";
-	values.val3.name="Spd:";
+	list_of_values[0].name="Rpm:";
+	list_of_values[1].name="Thr:";
+	list_of_values[2].name="Spd:";
 	
 protected:
 	long m_latitude;
