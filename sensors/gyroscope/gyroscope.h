@@ -5,8 +5,8 @@ class Gyroscope: public Cartesian_Sensor
 {
 public:
     Gyroscope(const int &pin);
-    values.val1.name="Hea:";
-    values.val2.name="Pit:";
-    values.val3.name="Rol:";
+    list_of_values[0].val1.name="Hea:";
+    list_of_values[1].name="Pit:";
+    list_of_values[2].name="Rol:";
     void read_sensor_value();
 };
