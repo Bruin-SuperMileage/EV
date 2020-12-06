@@ -46,12 +46,10 @@ void print_all_sensors() {
   //python script currently expects 2 digits per datum
   base_sensor* Sensors[3] = {myAccelerometer,myGps, myGyroscope};
   for (int i=0; i<num_sensors; i++){
-    Serial.print(Sensors[i].values.val1.name);
-    Serial.print(Sensors[i].values.val1.value);
-    Serial.print(Sensors[i].values.val2.name);
-    Serial.print(Sensors[i].values.val2.value);
-    Serial.print(Sensors[i].values.val3.name);
-    Serial.print(Sensors[i].values.val3.value);
+    for(int j=0; i<3; i++){
+      Serial.print(Sensors[i].list_of_values[j].name);
+      Serial.print(Sensors[i].list_of_values[j].value);
+    }
   }//so far, Accelerometer, GPS and Gyroscope have this implementation
 
   Serial.print("Lat:");
