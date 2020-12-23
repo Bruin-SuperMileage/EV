@@ -48,7 +48,7 @@ byte Linear::newSpd(int throttle){
 PD::PD(): m_error(0), m_prevError(0), m_rateError(0){}
 
 byte PD::newSpd(int throttle){
-  setDesiredSpd(map(throttle, 0, 1023, 0, 255));
+  setDesiredSpd(map(throttle, NEUTRAL_THROTTLE, MAX_THROTTLE, MIN_SPD, MAX_SPD));
   
   if(isTimeToChangeSpd()){
     m_error = getDesiredSpd() - getCurrentSpd();
