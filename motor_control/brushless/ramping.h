@@ -25,7 +25,6 @@ private:
 class Linear : public Ramping{
 public:
   byte newSpd(int throttle);
-private:
 };
 
 class PD : public Ramping{
