@@ -1,6 +1,6 @@
 #include "ramping.h"
 #include "constants.h"
-Ramping::Ramping():m_currentSpd(0), m_desiredSpd(0){}
+Ramping::Ramping():m_currentSpd(MIN_SPD), m_desiredSpd(MIN_SPD){}
 void Ramping::setCurrentSpd(byte spd)      {  m_currentSpd = spd; }
 void Ramping::setDesiredSpd(byte spd)      {  m_desiredSpd = spd; }
 
