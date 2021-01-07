@@ -93,11 +93,11 @@ while(True):
 
   num_runs += 1
 
-
-#Pairs with daqTest.ino
-
 #takes approx 450-630 ms per push, excluding outliers
 #get new trial number takes approx 900 ms
+
+#Pairs with main.ino
+#String parsing documentation can be found in readme alongside main.ino
 
 #Pyrebase4 Library
 #https://github.com/nhorvath/Pyrebase4
