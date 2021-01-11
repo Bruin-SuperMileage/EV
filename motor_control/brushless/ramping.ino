@@ -1,9 +1,8 @@
 #include "ramping.h"
-#include "constants.h"
+#include "GLOBAL.h"
 Ramping::Ramping():m_currentSpd(MIN_SPD), m_desiredSpd(MIN_SPD){}
 void Ramping::setCurrentSpd(byte spd)      {  m_currentSpd = spd; }
 void Ramping::setDesiredSpd(byte spd)      {  m_desiredSpd = spd; }
-
 byte Ramping::getCurrentSpd() const {  return m_currentSpd; }
 byte Ramping::getDesiredSpd() const {  return m_desiredSpd; }
 
