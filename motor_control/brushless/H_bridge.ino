@@ -1,5 +1,5 @@
 #include "ramping.h"
-#include "constants.h"
+#include "GLOBAL.h"
 
 void changeState_1();
 void changeState_2();
@@ -34,7 +34,6 @@ void setup() {
 void loop() {
   int throttleRead = analogRead(Motor.throttlePin);
 
-  // check analogWrite and digitalWrite for UCC277
   if(throttleRead <= NEUTRAL_THROTTLE){
     for(int i = 0; i < NUM_PINS; i++){
       analogWrite(Motor.outHighPins[i], 0);
@@ -43,12 +42,20 @@ void loop() {
     return;
   }
 
-  if(Motor.isMotorStopped())
+  if(Motor.isMotorStopped()){
+    Motor.changing_state = true; // shows that our initmotor function is in the middle of being called
     Motor.rotateMotor();
-  
+    Motor.changing_state = false;
+
+    if (Motor.interrupting) { // if the interrupt is called within the initMotor function then call the function again
+      Motor.rotateMotor();
+      Motor.interrupting = false;
+    }
+  }
+    
   spdToWrite = ramp->newSpd(throttleRead);
 }
 
-void changeState_1(){ changeState(Motor, 0);  }
-void changeState_2(){ changeState(Motor, 1);  }
-void changeState_3(){ changeState(Motor, 2);  }
+void changeState_1(){ changeState(&Motor, 0);  }
+void changeState_2(){ changeState(&Motor, 1);  }
+void changeState_3(){ changeState(&Motor, 2);  }
