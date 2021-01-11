@@ -7,7 +7,6 @@ public:
 protected:
   void setCurrentSpd(byte spd); 
   void setDesiredSpd(byte spd);
-
   byte getCurrentSpd() const;
   byte getDesiredSpd() const;
 
