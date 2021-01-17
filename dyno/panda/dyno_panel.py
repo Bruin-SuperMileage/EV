@@ -110,32 +110,35 @@ def map(x, in_min, in_max, out_min, out_max):
     return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
 #---------------------
 
+#Run experiments
 def push_config(event):
+    run = open("experiment_main.txt")
     magnet_config = "magnets="
-    for i in range(num_magnets):
-        pwm = int(magnet_tkvars[i].get())
-        if pwm < 0:
+    for line in run:
+        for i in range (num_magnets):
+          pwm = line[i]
+          if pwm < 0:
             pwm = 0
-        elif pwm > 9:
+           elif pwm > 9:
             pwm = 9
         pwm = str(map(pwm, 0, 9, 0, 255)).zfill(3)
         magnet_config = magnet_config + str(i) + ":" + pwm + ","
-    magnet_config = magnet_config[:-1] + ";"
-    if READ_SERIAL_ON:
-        driver.write(magnet_config)
-    print(magnet_config)
-
-    throttle = int(throttle_slider.get())
-    if throttle < 0:
-        throttle = 0
-    elif throttle > 100:
-        throttle = 100
-    throttle = str(map(throttle, 0, 100, 0, 255)).zfill(3)
-    throttle_config = "motor=" + throttle + ";"
-    if READ_SERIAL_ON:
-        driver.write(throttle_config)
-    print(throttle_config)
-    mcu_acknowledged=False
+        throttle = line[-1]
+        if throttle < 0:
+           throttle = 0
+        elif throttle > 100:
+           throttle = 100
+        throttle = str(map(throttle, 0, 100, 0, 255)).zfill(3)
+        throttle_config = "motor=" + throttle + ";"
+        if READ_SERIAL_ON:
+           driver.write(throttle_config)
+        print(throttle_config)
+        mcu_acknowledged=False
+        magnet_config = magnet_config[:-1] + ";"
+        if READ_SERIAL_ON:
+           driver.write(magnet_config)
+        print(magnet_config)
+   
 #---------------------
 
 #Write to text file
