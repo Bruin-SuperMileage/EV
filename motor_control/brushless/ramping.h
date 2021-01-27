@@ -10,7 +10,7 @@ protected:
   byte getCurrentSpd() const;
   byte getDesiredSpd() const;
 
-  bool isTimeToChangeSpd();
+  bool isTimeToChangeSpd(long timeMillis);
 
   void spdUp(byte amount);
   void spdDown(byte amount);
