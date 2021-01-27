@@ -53,7 +53,7 @@ void loop() {
     }
   }
     
-  spdToWrite = ramp->newSpd(throttleRead);
+  spdToWrite = ramp->newSpd(throttleRead, millis());
 }
 
 void changeState_1(){ changeState(&Motor, 0);  }
