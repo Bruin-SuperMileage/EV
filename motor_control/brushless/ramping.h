@@ -3,7 +3,7 @@
 class Ramping{
 public:
   Ramping();
-  virtual byte newSpd(int throttle) = 0;
+  virtual byte newSpd(int throttle, long timeMillis) = 0;
 protected:
   void setCurrentSpd(byte spd); 
   void setDesiredSpd(byte spd);
@@ -23,13 +23,13 @@ private:
 
 class Linear : public Ramping{
 public:
-  byte newSpd(int throttle);
+  byte newSpd(int throttle, long timeMillis);
 };
 
 class PD : public Ramping{
 public:
   PD();
-  byte newSpd(int throttle);
+  byte newSpd(int throttle, long timeMillis);
 private:
   byte m_error, m_prevError, m_rateError;
 };
