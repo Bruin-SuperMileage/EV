@@ -6,7 +6,7 @@ void Ramping::setDesiredSpd(byte spd)      {  m_desiredSpd = spd; }
 byte Ramping::getCurrentSpd() const {  return m_currentSpd; }
 byte Ramping::getDesiredSpd() const {  return m_desiredSpd; }
 
-bool Ramping::isTimeToChangeSpd(){
+bool Ramping::isTimeToChangeSpd(long timeMillis){
   if(millis() - m_time >= m_maxWaitTime){
     m_time = millis();
     return true;
@@ -30,10 +30,10 @@ void Ramping::spdDown(byte amount){
     m_currentSpd -= amount; 
 }
 
-byte Linear::newSpd(int throttle){
+byte Linear::newSpd(int throttle, long timeMillis){
   setDesiredSpd(map(throttle, NEUTRAL_THROTTLE, MAX_THROTTLE, MIN_SPD, MAX_SPD));
   
-  if(isTimeToChangeSpd()){
+  if(isTimeToChangeSpd(timeMillis)){
     if(getCurrentSpd() != getDesiredSpd()){
       if(getCurrentSpd() < getDesiredSpd())
         spdUp(RAMP_SPD);
@@ -46,10 +46,10 @@ byte Linear::newSpd(int throttle){
 
 PD::PD(): m_error(0), m_prevError(0), m_rateError(0){}
 
-byte PD::newSpd(int throttle){
+byte PD::newSpd(int throttle, long timeMillis){
   setDesiredSpd(map(throttle, NEUTRAL_THROTTLE, MAX_THROTTLE, MIN_SPD, MAX_SPD));
   
-  if(isTimeToChangeSpd()){
+  if(isTimeToChangeSpd(timeMillis)){
     m_error = getDesiredSpd() - getCurrentSpd();
     m_rateError = m_error - m_prevError;
     m_prevError = m_error;
