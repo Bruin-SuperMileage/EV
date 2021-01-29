@@ -22,6 +22,8 @@ const int powerToWrite[6][3] = {
 };
 
 struct MotorControl{
+  MotorControl(){ timeMark = millis();  }
+
   bool hallSensor[3];
 
   const int outHighPins[3] = {10, 6, 4};
@@ -34,8 +36,6 @@ struct MotorControl{
 
   long timeMark;
   const long maxWaitTime = 1500;
-
-  MotorControl(){ timeMark = millis();  }
 
   void initSensors(){
     for(int i = 0; i < NUM_PINS; i++)
