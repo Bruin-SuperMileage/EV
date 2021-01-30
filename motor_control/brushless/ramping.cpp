@@ -7,8 +7,8 @@ byte Ramping::getCurrentSpd() const {  return m_currentSpd; }
 byte Ramping::getDesiredSpd() const {  return m_desiredSpd; }
 
 bool Ramping::isTimeToChangeSpd(long timeMillis){
-  if(millis() - m_time >= m_maxWaitTime){
-    m_time = millis();
+  if(timeMillis - m_time >= m_maxWaitTime){
+    m_time = timeMillis;
     return true;
   }
   else{
