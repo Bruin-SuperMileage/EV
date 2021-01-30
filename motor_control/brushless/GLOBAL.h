@@ -34,7 +34,7 @@ struct MotorControl{
   bool changing_state = false;
   bool interrupting = false;
 
-  long timeMark;
+  long timeMark = millis();
   const long maxWaitTime = 1500;
 
   void initSensors(){
