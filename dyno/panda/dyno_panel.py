@@ -112,33 +112,36 @@ def map(x, in_min, in_max, out_min, out_max):
 
 #Run experiments
 def push_config(event):
-    run = open("experiment_main.txt")
+    with open("experiment_main.txt") as run
+    line = run.readline()
     magnet_config = "magnets="
-    for line in run:
+    while "end" not in line.strip().split(' '):
         for i in range (num_magnets):
           pwm = line[i]
           if pwm < 0:
             pwm = 0
-           elif pwm > 9:
+          elif pwm > 9:
             pwm = 9
         pwm = str(map(pwm, 0, 9, 0, 255)).zfill(3)
         magnet_config = magnet_config + str(i) + ":" + pwm + ","
         throttle = line[-1]
         if throttle < 0:
-           throttle = 0
+          throttle = 0
         elif throttle > 100:
-           throttle = 100
+          throttle = 100
         throttle = str(map(throttle, 0, 100, 0, 255)).zfill(3)
         throttle_config = "motor=" + throttle + ";"
         if READ_SERIAL_ON:
-           driver.write(throttle_config)
+          driver.write(throttle_config)
         print(throttle_config)
         mcu_acknowledged=False
         magnet_config = magnet_config[:-1] + ";"
         if READ_SERIAL_ON:
-           driver.write(magnet_config)
+          driver.write(magnet_config)
         print(magnet_config)
-   
+        while ("end" not in line.strip().split(' ')) and ((line = run.readline()) = None):
+          pass
+         
 #---------------------
 
 #Write to text file
