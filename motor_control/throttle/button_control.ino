@@ -53,7 +53,6 @@ if (mapType == LINEAR)
   }
   }
 }
-
 int mappingFunctionDeceleration(int time_NotPressed)
 {
    if(m_isPressed == false)
@@ -62,13 +61,12 @@ int mappingFunctionDeceleration(int time_NotPressed)
     {
       return m_speedOfCar;
     }
-  if(time_NotPressed >= 1)
+     double seconds_conversion = time_notPressed/1000;
+  if(seconds_conversion >= m_delaySpeed) 
   {
-    double seconds_conversion = time_notPressed/1000;
-    m_speedOfCar = m_speedOfCar/seconds_conversion;
+    m_speedOfCar = m_speedOfCar/seconds_conversion; //factor in denominator can be increased or decreased experimentally
+    return m_speedOfCar;
   }
-  m_speedOfCar = m_speedOfCar/(double)time_NotPressed;
-  return m_speedOfCar;
   }
   return m_speedOfCar;
 }
