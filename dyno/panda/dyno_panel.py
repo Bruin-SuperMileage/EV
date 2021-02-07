@@ -141,7 +141,22 @@ def push_config(event):
         print(magnet_config)
         while ("end" not in line.strip().split(' ')) and ((line = run.readline()) = None):
           pass
-         
+#---------------------
+
+#Write instructions to experiment_main.txt
+def write_instruction():
+    #decode Lexi
+    #newInstruct = open("experiment_main.txt")
+    #if timeElapsed==time || value2 == magnetstrength || emergency(data):
+      #write.newInstruct("end")
+      #write.newInstruct("\n")
+    #else:
+      #controlMag=some calculations
+      #motorPower=some calculations
+      #write.newInstruct (controlMag + " " + motorPower)
+      #write.newInstruct("\n")
+      
+      
 #---------------------
 
 #Write to text file
