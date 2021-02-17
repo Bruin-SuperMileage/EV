@@ -48,7 +48,7 @@ for position, line in enumerate(text):
         
 
         numValues = 22 #expected number of data inputs
-        data = line.split(".") #splits each data point into a list 
+        data = line.split(";") #splits each data point into a list 
         timeName = data[22][: -1]
 
         for i in range (0, numValues):
