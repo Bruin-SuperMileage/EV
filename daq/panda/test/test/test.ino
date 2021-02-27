@@ -9,55 +9,55 @@ void loop() {
   // put your main code here, to run repeatedly:
   
   // printing out data values
-  Serial.print("Lat:");
+  
   Serial.print(rand() % 90 + 10);
-  Serial.print("Lng:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
   
-  Serial.print("Cur:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Pwr:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Vlt:");
-  Serial.print(rand() % 90 + 10);
-  
-  Serial.print("GyX:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("GyY:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("GyZ:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
   
-  Serial.print("Hea:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Pit:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Rol:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
   
-  Serial.print("Alt:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Tem:");
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+  
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+  Serial.print(";");
   Serial.print(rand() % 90 + 10); 
   
-  Serial.print("Rpm:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Thr:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("Spd:");
-  Serial.print(rand() % 90 + 10);
-
-  Serial.print("AcX:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("AcY:");
-  Serial.print(rand() % 90 + 10);
-  Serial.print("AcZ:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
 
-  Serial.print("MaX:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("MaY:");
+  Serial.print(";");
   Serial.print(rand() % 90 + 10);
-  Serial.print("MaZ:");
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+  Serial.print(";");
+  Serial.print(rand() % 90 + 10);
+  Serial.print(";");
   Serial.println(rand() % 90 + 10);
 }
