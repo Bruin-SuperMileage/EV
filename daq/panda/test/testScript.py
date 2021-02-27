@@ -69,7 +69,7 @@ while(num_runs < 50):
   now = datetime.now() #set time
   timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
   text = text[:-2]
-  text = text + "." + timeName + "\r\n" #Something with newline in arduino is stopping this from actually being appended to string
+  text = text + ";" + timeName + "\r\n" #Something with newline in arduino is stopping this from actually being appended to string
 
   #Printing inputs to Black Box
   with open(completeName, 'a') as f:
