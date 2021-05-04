@@ -26,8 +26,8 @@ inputs_dict={
     }
 
 prefix = ['Cur', 'Vlt', 'Thr', 'Pwr', 'Spd', 'Lng', 'Lat', 'Alt', 'Tem', 
-             'GyX', 'GyY', 'GyZ', 'AcX', 'AcY', 'AcZ', 'MaX', 'MaY', 'MaZ', 
-             'Pit', 'Rol', 'Hea', 'Rpm']
+          'GyX', 'GyY', 'GyZ', 'AcX', 'AcY', 'AcZ', 'MaX', 'MaY', 'MaZ', 
+          'Pit', 'Rol', 'Hea', 'Rpm']
 
 Trial_Number = input("Enter Trial Number \n") 
 
@@ -42,20 +42,14 @@ text = open(completeName, 'r')
 
 for position, line in enumerate(text):
     if position%3 == 0:  #reads every third line  
-        
-    #Setting the time for each trial
-        #now = datetime.now() #set time
-        
 
         numValues = 22 #expected number of data inputs
         data = line.split(";") #splits each data point into a list 
-        timeName = data[22][: -1]
+        timeName = data[numValues][: -1]
+
 
         for i in range (0, numValues):
                 inputs_dict[prefix[i]] = float(data[i]) #may fail on first run, simply re-run
- 
-        
-        #Problem
 
         #push collected data to database
         db.child(trialName).child(timeName).update({
@@ -95,9 +89,6 @@ for position, line in enumerate(text):
         {"Latest Trial": trialName,
         "Latest Time": data[22],
         "Running": "True"})
-
-        #num_runs += 1
-
 
 #Pairs with test.ino
 

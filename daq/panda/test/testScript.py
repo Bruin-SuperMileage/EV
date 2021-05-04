@@ -62,8 +62,6 @@ while(num_runs < 50):
   save_path = 'C:\\Users\\jsand\\OneDrive\\Documents\\SMV\\DAQ\\Trials'
   fileName = trialName + ".txt"
   completeName = os.path.join(save_path, fileName)
-
-
     
   #Setting the time for each trial
   now = datetime.now() #set time
@@ -80,9 +78,6 @@ while(num_runs < 50):
   
   for i in range (0, numValues):
         inputs_dict[prefix[i]] = float(data[i]) #may fail on first run, simply re-run
-
-        
-
 
   #push collected data to database
   db.child(trialName).child(timeName).update({
