@@ -25,10 +25,6 @@ inputs_dict={
     'Pit' : -1,'Rol' : -1,'Hea' : -1,'Rpm' : -1, 
     }
 
-prefix = ['Cur', 'Vlt', 'Thr', 'Pwr', 'Spd', 'Lng', 'Lat', 'Alt', 'Tem', 
-          'GyX', 'GyY', 'GyZ', 'AcX', 'AcY', 'AcZ', 'MaX', 'MaY', 'MaZ', 
-          'Pit', 'Rol', 'Hea', 'Rpm']
-
 Trial_Number = input("Enter Trial Number \n") 
 
 #Reads in black box data to certain location
@@ -41,59 +37,52 @@ completeName = os.path.join(save_path, fileName)
 text = open(completeName, 'r')
 
 for position, line in enumerate(text):
-    if position%3 == 0:  #reads every third line  
+        
+    data = line.split(";") #splits each data point into a list 
+    numValues = len(data)-1#expected number of data inputs
+    timeName = data[numValues][: -1]
+    print(data)
 
-        numValues = 22 #expected number of data inputs
-        data = line.split(";") #splits each data point into a list 
-        timeName = data[numValues][: -1]
+    for i in range (0, numValues, 2):
+        #Since we have delimeter for both string and data, data[i] will represent the prefix and data[i+1] will be the associated data
+        #e.x) Lat;314;Alt;516;Pwr;678...
+        inputs_dict[data[i]] = float(data[i+1]) #may fail on first run, simply re-run
 
+    #push collected data to database
+    db.child(trialName).child(timeName).update({
+    "gps": 
+        {"latitude": inputs_dict['Lat'],
+        "longitude": inputs_dict['Lng']},
+    "joulemeter": 
+        {"current": inputs_dict['Cur'],
+        "power": inputs_dict['Pwr'],
+        "voltage": inputs_dict['Vlt']},
+    "gyroscope":
+        {"GyX": inputs_dict['GyX'],
+        "GyY": inputs_dict['GyY'],
+        "GyZ": inputs_dict['GyZ'],
+        "heading": inputs_dict['Hea'],
+        "pitch": inputs_dict['Pit'],
+        "roll": inputs_dict['Rol']},
+    "environment":
+        {"altitude": inputs_dict['Alt'],
+        "temperature": inputs_dict['Tem']},
+    "hall-effect":
+        {"rpm": inputs_dict['Rpm'],
+        "throttle": inputs_dict['Thr'],
+        "speed": inputs_dict['Spd']},
+    "accelerometer":
+        {"acceleration x": inputs_dict['AcX'],
+        "acceleration y": inputs_dict['AcY'],
+        "acceleration z": inputs_dict['AcZ']},
+    "magnetometer":
+        {"MagX": inputs_dict['MaX'],
+        "MagY": inputs_dict['MaY'],
+        "MagZ": inputs_dict['MaZ']},
+    })
 
-        for i in range (0, numValues):
-                inputs_dict[prefix[i]] = float(data[i]) #may fail on first run, simply re-run
-
-        #push collected data to database
-        db.child(trialName).child(timeName).update({
-        "gps": 
-            {"latitude": inputs_dict['Lat'],
-            "longitude": inputs_dict['Lng']},
-        "joulemeter": 
-            {"current": inputs_dict['Cur'],
-            "power": inputs_dict['Pwr'],
-            "voltage": inputs_dict['Vlt']},
-        "gyroscope":
-            {"GyX": inputs_dict['GyX'],
-            "GyY": inputs_dict['GyY'],
-            "GyZ": inputs_dict['GyZ'],
-            "heading": inputs_dict['Hea'],
-            "pitch": inputs_dict['Pit'],
-            "roll": inputs_dict['Rol']},
-        "environment":
-            {"altitude": inputs_dict['Alt'],
-            "temperature": inputs_dict['Tem']},
-        "hall-effect":
-            {"rpm": inputs_dict['Rpm'],
-            "throttle": inputs_dict['Thr'],
-            "speed": inputs_dict['Spd']},
-        "accelerometer":
-            {"acceleration x": inputs_dict['AcX'],
-            "acceleration y": inputs_dict['AcY'],
-            "acceleration z": inputs_dict['AcZ']},
-        "magnetometer":
-            {"MagX": inputs_dict['MaX'],
-            "MagY": inputs_dict['MaY'],
-            "MagZ": inputs_dict['MaZ']},
-        })
-
-        #Updates trial information only after successful push
-        db.update(
-        {"Latest Trial": trialName,
-        "Latest Time": data[22],
-        "Running": "True"})
-
-#Pairs with test.ino
-
-#takes approx 450-630 ms per push, excluding outliers
-#get new trial number takes approx 900 ms
-
-#Pyrebase4 Library
-#https://github.com/nhorvath/Pyrebase4
+    #Updates trial information only after successful push
+    db.update(
+    {"Latest Trial": trialName,
+    "Latest Time": data[22],
+    "Running": "True"})

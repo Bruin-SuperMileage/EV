@@ -25,10 +25,6 @@ inputs_dict={
     'Pit' : -1,'Rol' : -1,'Hea' : -1,'Rpm' : -1, 
     }
 
-prefix = ['Cur', 'Vlt', 'Thr', 'Pwr', 'Spd', 'Lng', 'Lat', 'Alt', 'Tem', 
-             'GyX', 'GyY', 'GyZ', 'AcX', 'AcY', 'AcZ', 'MaX', 'MaY', 'MaZ', 
-             'Pit', 'Rol', 'Hea', 'Rpm']
-
 #Begin listening to a device on the specified port (Windows)
 ser = serial.Serial('COM3', baudrate = 9600, timeout = 0.1)
 
@@ -52,7 +48,7 @@ print(milliseconds() - start)
 sleep(1.6)
 
 num_runs = 0
-while(num_runs < 50):
+while(num_runs < 160):
   
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
@@ -62,7 +58,7 @@ while(num_runs < 50):
   save_path = 'C:\\Users\\jsand\\OneDrive\\Documents\\SMV\\DAQ\\Trials'
   fileName = trialName + ".txt"
   completeName = os.path.join(save_path, fileName)
-    
+
   #Setting the time for each trial
   now = datetime.now() #set time
   timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
@@ -73,11 +69,13 @@ while(num_runs < 50):
   with open(completeName, 'a') as f:
       print(text, file = f)
  
-  numValues = 22 #expected number of data inputs
-  data = text.split(";") #splits each data point into a list 
   
-  for i in range (0, numValues):
-        inputs_dict[prefix[i]] = float(data[i]) #may fail on first run, simply re-run
+  data = text.split(";") #splits each data point into a list 
+  numValues = len(data)-1 #expected number of data inputs minus time input
+  print(data)
+  
+  for i in range (0, numValues, 2):
+        inputs_dict[data[i]] = float(data[i+1]) #may fail on first run, simply re-run
 
   #push collected data to database
   db.child(trialName).child(timeName).update({
