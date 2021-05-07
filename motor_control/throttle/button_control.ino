@@ -8,17 +8,69 @@ ButtonThrottle::ButtonThrottle(const int &pin, int timeToFull) : Throttle(pin, t
 
 int ButtonThrottle::mappingFunction(int time_pressed, m_map_type mapType)
 {
-  if (mapType == LINEAR)
+  if(m_isPressed == true)
   {
-    return std::min(time_pressed / m_timeToFull, 1) * 100;
+if (mapType == LINEAR)
+  {
+    m_speedOfCar = std::min((double)time_pressed / (double)m_timeToFull, 1.0) * m_maxValue;
+    return m_speedOfCar;
+  }
+  if (mapType == POWER)
+  {
+    if (time_pressed <= m_timeToFull)
+    {
+      m_speedOfCar = std::pow((double)time_pressed / (double)m_timeToFull, 2) * m_maxValue;
+      return m_speedOfCar; // This function uses m_timeToFull to create a dependency on what time we pick and creates an exponential to the power of the 2 with the ratio
+    }
+    else
+    {
+      m_speedOfCar = m_maxValue;
+      return m_speedOfCar;
+    }
   }
   if (mapType == EXPONENTIAL)
   {
+    if (time_pressed < m_timeToFull)
+    {
+      double temp_time_pressed = time_pressed;
+      double ratio = 0;
+      ratio = temp_time_pressed / 1000;
+      if (ratio == 0)
+      {
+        return 0;
+      }
+      if (std::exp(ratio) <= m_maxValue)
+      {
+        m_speedOfCar = std::exp(ratio);
+        return m_speedOfCar; //This function has no reliance on m_timeToFull, it simply follows an e exponential curve up til maximum value. Takes about 5.5 seconds to reach max speed(assuming 255 is the value we set)
+      }
+    }
+    else
+    {
+      m_speedOfCar = m_maxValue;
+      return m_speedOfCar;
+    }
   }
-  if (mapType == LOGARITHMIC)
-  {
   }
 }
+int mappingFunctionDeceleration(int time_NotPressed)
+{
+   if(m_isPressed == false)
+  {
+    if(m_speedOfCar ==0)
+    {
+      return m_speedOfCar;
+    }
+     double seconds_conversion = time_notPressed/1000;
+  if(seconds_conversion >= m_delaySpeed) 
+  {
+    m_speedOfCar = m_speedOfCar/seconds_conversion; //factor in denominator can be increased or decreased experimentally
+    return m_speedOfCar;
+  }
+  }
+  return m_speedOfCar;
+}
+
 
 /*
    * Reads the throttle input from analog signal,
