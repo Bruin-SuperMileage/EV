@@ -1,4 +1,6 @@
+import os.path 
 import serial
+print(serial.__file__),
 import pyrebase
 from time import time, sleep
 from datetime import datetime
@@ -20,11 +22,11 @@ inputs_dict={
     'Cur' : -1,'Vlt' : -1,'Thr' : -1,'Pwr' : -1,
     'Spd' : -1,'Lng' : -1,'Lat' : -1,'Alt' : -1,'Tem' : -1,
     'GyX' : -1,'GyY' : -1,'GyZ' : -1,'AcX' : -1,'AcY' : -1,'AcZ' : -1,'MaX' : -1,'MaY' : -1,'MaZ' : -1,
-    'Pit' : -1,'Rol' : -1,'Hea' : -1,'Rpm' : -1,
+    'Pit' : -1,'Rol' : -1,'Hea' : -1,'Rpm' : -1, 
     }
 
 #Begin listening to a device on the specified port (Windows)
-ser = serial.Serial('/dev/cu.usbmodem14101', baudrate = 9600, timeout = 0.1)
+ser = serial.Serial('COM3', baudrate = 9600, timeout = 0.1)
 
 #Define function to get current time in milliseconds
 milliseconds = lambda: int(time() * 1000)
@@ -46,23 +48,34 @@ print(milliseconds() - start)
 sleep(1.6)
 
 num_runs = 0
-while(num_runs < 50):
+while(num_runs < 160):
   
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
   print(milliseconds() - start)
 
+  #optional: Prints out black box data to certain location
+  save_path = 'C:\\Users\\jsand\\OneDrive\\Documents\\SMV\\DAQ\\Trials'
+  fileName = trialName + ".txt"
+  completeName = os.path.join(save_path, fileName)
+
   #Setting the time for each trial
   now = datetime.now() #set time
   timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
+  text = text[:-2]
+  text = text + ";" + timeName + "\r\n" #Something with newline in arduino is stopping this from actually being appended to string
 
-  numValues = 22; #expected number of data inputs
-  j = 0 #iterating variable for traversing data string
-  for i in range (0, numValues):
-    prefix = text[j:j+3] #KEY
-    data = text[j+4:j+6] #VALUE
-    inputs_dict[prefix] = float(data) #may fail on first run, simply re-run
-    j+=6 #assumes 2 digit data values
+  #Printing inputs to Black Box
+  with open(completeName, 'a') as f:
+      print(text, file = f)
+ 
+  
+  data = text.split(";") #splits each data point into a list 
+  numValues = len(data)-1 #expected number of data inputs minus time input
+  print(data)
+  
+  for i in range (0, numValues, 2):
+        inputs_dict[data[i]] = float(data[i+1]) #may fail on first run, simply re-run
 
   #push collected data to database
   db.child(trialName).child(timeName).update({
@@ -104,6 +117,8 @@ while(num_runs < 50):
   "Running": "True"})
 
   num_runs += 1
+
+db.update({"Running": "False"})
 
 
 #Pairs with test.ino
