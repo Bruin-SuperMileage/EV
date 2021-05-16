@@ -1,4 +1,6 @@
+import os.path 
 import serial
+print(serial.__file__),
 import pyrebase
 from time import time, sleep
 from datetime import datetime
@@ -40,17 +42,28 @@ while(True):
   #Read in from the serial. Timeout if nothing is available
   text = ser.readline().decode() #read in one data string
 
+  #optional: Prints out black box data to certain location
+  savePath = 'C:\\Users\\jsand\\OneDrive\\Documents\\SMV\\DAQ\\Trials'
+  fileName = trialName + ".txt"
+  completeName = os.path.join(savePath, fileName)
+
   #Setting the time for each trial
   now = datetime.now() #set time
   timeName = now.strftime("%H:%M:%S:%f") [:-3] #set current time
+  text = text[:-2]
+  text = text + ";" + timeName + "\r\n" #Something with newline in arduino is stopping this from actually being appended to string
 
-  numValues = 22; #expected number of data inputs
-  j = 0 #iterating variable for traversing data string
-  for i in range (0, numValues):
-    prefix = text[j:j+3] #KEY
-    data = text[j+4:j+6] #VALUE
-    inputs_dict[prefix] = float(data) #may fail on first run, simply re-run
-    j+=6 #assumes 2 digit data values
+  #Printing inputs to Black Box
+  with open(completeName, 'a') as f:
+      print(text, file = f)
+ 
+  
+  data = text.split(";") #splits each data point into a list 
+  numValues = len(data)-1 #expected number of data inputs minus time input
+  print(data)
+  
+  for i in range (0, numValues, 2):
+        inputs_dict[data[i]] = float(data[i+1]) #may fail on first run, simply re-run
 
   #push collected data to database
   db.child(trialName).child(timeName).update({
@@ -91,7 +104,7 @@ while(True):
   "Latest Time": timeName,
   "Running": "True"})
 
-  num_runs += 1
+db.update({"Running": "False"})
 
 #takes approx 450-630 ms per push, excluding outliers
 #get new trial number takes approx 900 ms
