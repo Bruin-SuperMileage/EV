@@ -43,7 +43,7 @@ while(True):
   text = ser.readline().decode() #read in one data string
 
   #optional: Prints out black box data to certain location
-  savePath = 'C:\\Users\\jsand\\OneDrive\\Documents\\SMV\\DAQ\\Trials'
+  savePath = os.path.dirname(__file__)
   fileName = trialName + ".txt"
   completeName = os.path.join(savePath, fileName)
 
