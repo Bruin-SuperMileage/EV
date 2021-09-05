@@ -1,0 +1,1009 @@
+Time: 220.994
+4.48697
+M/KWH: 208.207
+Current Velocity: 0
+Run
+Distance10Time: 10.875
+Final Velocity: 11.175
+Joules Lost1099.33
+
+Current Velocity: 11.175
+Coast
+Distance20Time: 10.8395
+Final Velocity: 10.8502
+Joules Lost1099.33
+
+Current Velocity: 10.8502
+Coast
+Distance30Time: 10.5188
+Final Velocity: 10.5295
+Joules Lost1099.33
+
+Current Velocity: 10.5295
+Coast
+Distance40Time: 10.1915
+Final Velocity: 10.202
+Joules Lost1099.33
+
+Current Velocity: 10.202
+Coast
+Distance50Time: 9.85768
+Final Velocity: 9.86805
+Joules Lost1099.33
+
+Current Velocity: 9.86805
+Coast
+Distance60Time: 9.50734
+Final Velocity: 9.51759
+Joules Lost1099.33
+
+Current Velocity: 9.51759
+Coast
+Distance70Time: 9.15116
+Final Velocity: 9.16127
+Joules Lost1099.33
+
+Current Velocity: 9.16127
+Coast
+Distance80Time: 8.78927
+Final Velocity: 8.79926
+Joules Lost1099.33
+
+Current Velocity: 8.79926
+Coast
+Distance90Time: 8.41195
+Final Velocity: 8.42182
+Joules Lost1099.33
+
+Current Velocity: 8.42182
+Run
+Distance100Time: 8.375
+Final Velocity: 13.465
+Joules Lost2065.13
+
+Current Velocity: 13.465
+Coast
+Distance110Time: 13.156
+Final Velocity: 13.1678
+Joules Lost2065.13
+
+Current Velocity: 13.1678
+Coast
+Distance120Time: 12.8627
+Final Velocity: 12.8743
+Joules Lost2065.13
+
+Current Velocity: 12.8743
+Coast
+Distance130Time: 12.5614
+Final Velocity: 12.5729
+Joules Lost2065.13
+
+Current Velocity: 12.5729
+Coast
+Distance140Time: 12.2637
+Final Velocity: 12.2751
+Joules Lost2065.13
+
+Current Velocity: 12.2751
+Coast
+Distance150Time: 11.9585
+Final Velocity: 11.9697
+Joules Lost2065.13
+
+Current Velocity: 11.9697
+Coast
+Distance160Time: 11.6458
+Final Velocity: 11.6569
+Joules Lost2065.13
+
+Current Velocity: 11.6569
+Coast
+Distance170Time: 11.337
+Final Velocity: 11.348
+Joules Lost2065.13
+
+Current Velocity: 11.348
+Coast
+Distance180Time: 11.021
+Final Velocity: 11.0319
+Joules Lost2065.13
+
+Current Velocity: 11.0319
+Coast
+Distance190Time: 10.6982
+Final Velocity: 10.7089
+Joules Lost2065.13
+
+Current Velocity: 10.7089
+Coast
+Distance200Time: 10.3686
+Final Velocity: 10.3792
+Joules Lost2065.13
+
+Current Velocity: 10.3792
+Coast
+Distance210Time: 10.0327
+Final Velocity: 10.0431
+Joules Lost2065.13
+
+Current Velocity: 10.0431
+Coast
+Distance220Time: 9.69045
+Final Velocity: 9.70076
+Joules Lost2065.13
+
+Current Velocity: 9.70076
+Coast
+Distance230Time: 9.34217
+Final Velocity: 9.35235
+Joules Lost2065.13
+
+Current Velocity: 9.35235
+Coast
+Distance240Time: 8.98799
+Final Velocity: 8.99805
+Joules Lost2065.13
+
+Current Velocity: 8.99805
+Coast
+Distance250Time: 8.61814
+Final Velocity: 8.62807
+Joules Lost2065.13
+
+Current Velocity: 8.62807
+Run
+Distance260Time: 8.25
+Final Velocity: 13.6374
+Joules Lost3041.66
+
+Current Velocity: 13.6374
+Coast
+Distance270Time: 13.3381
+Final Velocity: 13.35
+Joules Lost3041.66
+
+Current Velocity: 13.35
+Coast
+Distance280Time: 13.0425
+Final Velocity: 13.0543
+Joules Lost3041.66
+
+Current Velocity: 13.0543
+Coast
+Distance290Time: 12.7505
+Final Velocity: 12.7622
+Joules Lost3041.66
+
+Current Velocity: 12.7622
+Coast
+Distance300Time: 12.4506
+Final Velocity: 12.4621
+Joules Lost3041.66
+
+Current Velocity: 12.4621
+Coast
+Distance310Time: 12.1544
+Final Velocity: 12.1657
+Joules Lost3041.66
+
+Current Velocity: 12.1657
+Coast
+Distance320Time: 11.8504
+Final Velocity: 11.8616
+Joules Lost3041.66
+
+Current Velocity: 11.8616
+Coast
+Distance330Time: 11.5391
+Final Velocity: 11.5502
+Joules Lost3041.66
+
+Current Velocity: 11.5502
+Coast
+Distance340Time: 11.2206
+Final Velocity: 11.2316
+Joules Lost3041.66
+
+Current Velocity: 11.2316
+Coast
+Distance350Time: 10.9061
+Final Velocity: 10.9169
+Joules Lost3041.66
+
+Current Velocity: 10.9169
+Coast
+Distance360Time: 10.5846
+Final Velocity: 10.5953
+Joules Lost3041.66
+
+Current Velocity: 10.5953
+Coast
+Distance370Time: 10.2565
+Final Velocity: 10.267
+Joules Lost3041.66
+
+Current Velocity: 10.267
+Coast
+Distance380Time: 9.9219
+Final Velocity: 9.9323
+Joules Lost3041.66
+
+Current Velocity: 9.9323
+Coast
+Distance390Time: 9.58103
+Final Velocity: 9.5913
+Joules Lost3041.66
+
+Current Velocity: 9.5913
+Coast
+Distance400Time: 9.23408
+Final Velocity: 9.24422
+Joules Lost3041.66
+
+Current Velocity: 9.24422
+Coast
+Distance410Time: 8.87118
+Final Velocity: 8.8812
+Joules Lost3041.66
+
+Current Velocity: 8.8812
+Coast
+Distance420Time: 8.50274
+Final Velocity: 8.51264
+Joules Lost3041.66
+
+Current Velocity: 8.51264
+Run
+Distance430Time: 8.3125
+Final Velocity: 13.5409
+Joules Lost4012.21
+
+Current Velocity: 13.5409
+Coast
+Distance440Time: 13.2428
+Final Velocity: 13.2547
+Joules Lost4012.21
+
+Current Velocity: 13.2547
+Coast
+Distance450Time: 12.9484
+Final Velocity: 12.9601
+Joules Lost4012.21
+
+Current Velocity: 12.9601
+Coast
+Distance460Time: 12.6576
+Final Velocity: 12.6691
+Joules Lost4012.21
+
+Current Velocity: 12.6691
+Coast
+Distance470Time: 12.3588
+Final Velocity: 12.3702
+Joules Lost4012.21
+
+Current Velocity: 12.3702
+Coast
+Distance480Time: 12.0523
+Final Velocity: 12.0636
+Joules Lost4012.21
+
+Current Velocity: 12.0636
+Coast
+Distance490Time: 11.7497
+Final Velocity: 11.7608
+Joules Lost4012.21
+
+Current Velocity: 11.7608
+Coast
+Distance500Time: 11.4396
+Final Velocity: 11.4506
+Joules Lost4012.21
+
+Current Velocity: 11.4506
+Coast
+Distance510Time: 11.1223
+Final Velocity: 11.1332
+Joules Lost4012.21
+
+Current Velocity: 11.1332
+Coast
+Distance520Time: 10.7982
+Final Velocity: 10.809
+Joules Lost4012.21
+
+Current Velocity: 10.809
+Coast
+Distance530Time: 10.4675
+Final Velocity: 10.4781
+Joules Lost4012.21
+
+Current Velocity: 10.4781
+Coast
+Distance540Time: 10.1303
+Final Velocity: 10.1408
+Joules Lost4012.21
+
+Current Velocity: 10.1408
+Coast
+Distance550Time: 9.78687
+Final Velocity: 9.79721
+Joules Lost4012.21
+
+Current Velocity: 9.79721
+Coast
+Distance560Time: 9.4374
+Final Velocity: 9.44762
+Joules Lost4012.21
+
+Current Velocity: 9.44762
+Coast
+Distance570Time: 9.08207
+Final Velocity: 9.09216
+Joules Lost4012.21
+
+Current Velocity: 9.09216
+Coast
+Distance580Time: 8.72102
+Final Velocity: 8.73099
+Joules Lost4012.21
+
+Current Velocity: 8.73099
+Coast
+Distance590Time: 8.34454
+Final Velocity: 8.35439
+Joules Lost4012.21
+
+Current Velocity: 8.35439
+Run
+Distance600Time: 8.40625
+Final Velocity: 13.4086
+Joules Lost4974.45
+
+Current Velocity: 13.4086
+Coast
+Distance610Time: 13.1003
+Final Velocity: 13.1121
+Joules Lost4974.45
+
+Current Velocity: 13.1121
+Coast
+Distance620Time: 12.8077
+Final Velocity: 12.8193
+Joules Lost4974.45
+
+Current Velocity: 12.8193
+Coast
+Distance630Time: 12.5071
+Final Velocity: 12.5186
+Joules Lost4974.45
+
+Current Velocity: 12.5186
+Coast
+Distance640Time: 12.2101
+Final Velocity: 12.2215
+Joules Lost4974.45
+
+Current Velocity: 12.2215
+Coast
+Distance650Time: 11.9055
+Final Velocity: 11.9167
+Joules Lost4974.45
+
+Current Velocity: 11.9167
+Coast
+Distance660Time: 11.5935
+Final Velocity: 11.6046
+Joules Lost4974.45
+
+Current Velocity: 11.6046
+Coast
+Distance670Time: 11.2853
+Final Velocity: 11.2962
+Joules Lost4974.45
+
+Current Velocity: 11.2962
+Coast
+Distance680Time: 10.97
+Final Velocity: 10.9808
+Joules Lost4974.45
+
+Current Velocity: 10.9808
+Coast
+Distance690Time: 10.6477
+Final Velocity: 10.6584
+Joules Lost4974.45
+
+Current Velocity: 10.6584
+Coast
+Distance700Time: 10.3188
+Final Velocity: 10.3294
+Joules Lost4974.45
+
+Current Velocity: 10.3294
+Coast
+Distance710Time: 9.98347
+Final Velocity: 9.99389
+Joules Lost4974.45
+
+Current Velocity: 9.99389
+Coast
+Distance720Time: 9.64185
+Final Velocity: 9.65214
+Joules Lost4974.45
+
+Current Velocity: 9.65214
+Coast
+Distance730Time: 9.29416
+Final Velocity: 9.30433
+Joules Lost4974.45
+
+Current Velocity: 9.30433
+Coast
+Distance740Time: 8.93052
+Final Velocity: 8.94056
+Joules Lost4974.45
+
+Current Velocity: 8.94056
+Coast
+Distance750Time: 8.56137
+Final Velocity: 8.57128
+Joules Lost4974.45
+
+Current Velocity: 8.57128
+Run
+Distance760Time: 8.28125
+Final Velocity: 13.59
+Joules Lost5948.05
+
+Current Velocity: 13.59
+Coast
+Distance770Time: 13.2912
+Final Velocity: 13.3031
+Joules Lost5948.05
+
+Current Velocity: 13.3031
+Coast
+Distance780Time: 12.9962
+Final Velocity: 13.0079
+Joules Lost5948.05
+
+Current Velocity: 13.0079
+Coast
+Distance790Time: 12.7048
+Final Velocity: 12.7164
+Joules Lost5948.05
+
+Current Velocity: 12.7164
+Coast
+Distance800Time: 12.4054
+Final Velocity: 12.4169
+Joules Lost5948.05
+
+Current Velocity: 12.4169
+Coast
+Distance810Time: 12.0984
+Final Velocity: 12.1097
+Joules Lost5948.05
+
+Current Velocity: 12.1097
+Coast
+Distance820Time: 11.7952
+Final Velocity: 11.8063
+Joules Lost5948.05
+
+Current Velocity: 11.8063
+Coast
+Distance830Time: 11.4845
+Final Velocity: 11.4956
+Joules Lost5948.05
+
+Current Velocity: 11.4956
+Coast
+Distance840Time: 11.1668
+Final Velocity: 11.1776
+Joules Lost5948.05
+
+Current Velocity: 11.1776
+Coast
+Distance850Time: 10.8421
+Final Velocity: 10.8529
+Joules Lost5948.05
+
+Current Velocity: 10.8529
+Coast
+Distance860Time: 10.5214
+Final Velocity: 10.532
+Joules Lost5948.05
+
+Current Velocity: 10.532
+Coast
+Distance870Time: 10.194
+Final Velocity: 10.2045
+Joules Lost5948.05
+
+Current Velocity: 10.2045
+Coast
+Distance880Time: 9.8602
+Final Velocity: 9.87057
+Joules Lost5948.05
+
+Current Velocity: 9.87057
+Coast
+Distance890Time: 9.50983
+Final Velocity: 9.52007
+Joules Lost5948.05
+
+Current Velocity: 9.52007
+Coast
+Distance900Time: 9.15361
+Final Velocity: 9.16373
+Joules Lost5948.05
+
+Current Velocity: 9.16373
+Coast
+Distance910Time: 8.79169
+Final Velocity: 8.80169
+Joules Lost5948.05
+
+Current Velocity: 8.80169
+Coast
+Distance920Time: 8.41435
+Final Velocity: 8.42422
+Joules Lost5948.05
+
+Current Velocity: 8.42422
+Run
+Distance930Time: 8.375
+Final Velocity: 13.467
+Joules Lost6913.97
+
+Current Velocity: 13.467
+Coast
+Distance940Time: 13.158
+Final Velocity: 13.1698
+Joules Lost6913.97
+
+Current Velocity: 13.1698
+Coast
+Distance950Time: 12.8646
+Final Velocity: 12.8763
+Joules Lost6913.97
+
+Current Velocity: 12.8763
+Coast
+Distance960Time: 12.5633
+Final Velocity: 12.5748
+Joules Lost6913.97
+
+Current Velocity: 12.5748
+Coast
+Distance970Time: 12.2657
+Final Velocity: 12.277
+Joules Lost6913.97
+
+Current Velocity: 12.277
+Coast
+Distance980Time: 11.9604
+Final Velocity: 11.9716
+Joules Lost6913.97
+
+Current Velocity: 11.9716
+Coast
+Distance990Time: 11.6477
+Final Velocity: 11.6588
+Joules Lost6913.97
+
+Current Velocity: 11.6588
+Coast
+Distance1000Time: 11.3388
+Final Velocity: 11.3498
+Joules Lost6913.97
+
+Time: 1078.02
+0.919833
+M/KWH: 320.82
+Current Velocity: 0
+Coast	Distance: 10	Time: 10.875	Final Velocity: 11.175	Joules Lost1099.33	
+Current Velocity: 11.175
+Coast	Distance: 20	Time: 10.8395	Final Velocity: 10.8502	Joules Lost1099.33	
+Current Velocity: 10.8502
+Coast	Distance: 30	Time: 10.5188	Final Velocity: 10.5295	Joules Lost1099.33	
+Current Velocity: 10.5295
+Coast	Distance: 40	Time: 10.1915	Final Velocity: 10.202	Joules Lost1099.33	
+Current Velocity: 10.202
+Coast	Distance: 50	Time: 9.85768	Final Velocity: 9.86805	Joules Lost1099.33	
+Current Velocity: 9.86805
+Coast	Distance: 60	Time: 9.50734	Final Velocity: 9.51759	Joules Lost1099.33	
+Current Velocity: 9.51759
+Coast	Distance: 70	Time: 9.15116	Final Velocity: 9.16127	Joules Lost1099.33	
+Current Velocity: 9.16127
+Coast	Distance: 80	Time: 8.78927	Final Velocity: 8.79926	Joules Lost1099.33	
+Current Velocity: 8.79926
+Coast	Distance: 90	Time: 8.41195	Final Velocity: 8.42182	Joules Lost1099.33	
+Current Velocity: 8.42182
+Coast	Distance: 100	Time: 8.375	Final Velocity: 13.465	Joules Lost2065.13	
+Current Velocity: 13.465
+Coast	Distance: 110	Time: 13.156	Final Velocity: 13.1678	Joules Lost2065.13	
+Current Velocity: 13.1678
+Coast	Distance: 120	Time: 12.8627	Final Velocity: 12.8743	Joules Lost2065.13	
+Current Velocity: 12.8743
+Coast	Distance: 130	Time: 12.5614	Final Velocity: 12.5729	Joules Lost2065.13	
+Current Velocity: 12.5729
+Coast	Distance: 140	Time: 12.2637	Final Velocity: 12.2751	Joules Lost2065.13	
+Current Velocity: 12.2751
+Coast	Distance: 150	Time: 11.9585	Final Velocity: 11.9697	Joules Lost2065.13	
+Current Velocity: 11.9697
+Coast	Distance: 160	Time: 11.6458	Final Velocity: 11.6569	Joules Lost2065.13	
+Current Velocity: 11.6569
+Coast	Distance: 170	Time: 11.337	Final Velocity: 11.348	Joules Lost2065.13	
+Current Velocity: 11.348
+Coast	Distance: 180	Time: 11.021	Final Velocity: 11.0319	Joules Lost2065.13	
+Current Velocity: 11.0319
+Coast	Distance: 190	Time: 10.6982	Final Velocity: 10.7089	Joules Lost2065.13	
+Current Velocity: 10.7089
+Coast	Distance: 200	Time: 10.3686	Final Velocity: 10.3792	Joules Lost2065.13	
+Current Velocity: 10.3792
+Coast	Distance: 210	Time: 10.0327	Final Velocity: 10.0431	Joules Lost2065.13	
+Current Velocity: 10.0431
+Coast	Distance: 220	Time: 9.69045	Final Velocity: 9.70076	Joules Lost2065.13	
+Current Velocity: 9.70076
+Coast	Distance: 230	Time: 9.34217	Final Velocity: 9.35235	Joules Lost2065.13	
+Current Velocity: 9.35235
+Coast	Distance: 240	Time: 8.98799	Final Velocity: 8.99805	Joules Lost2065.13	
+Current Velocity: 8.99805
+Coast	Distance: 250	Time: 8.61814	Final Velocity: 8.62807	Joules Lost2065.13	
+Current Velocity: 8.62807
+Coast	Distance: 260	Time: 8.25	Final Velocity: 13.6374	Joules Lost3041.66	
+Current Velocity: 13.6374
+Coast	Distance: 270	Time: 13.3381	Final Velocity: 13.35	Joules Lost3041.66	
+Current Velocity: 13.35
+Coast	Distance: 280	Time: 13.0425	Final Velocity: 13.0543	Joules Lost3041.66	
+Current Velocity: 13.0543
+Coast	Distance: 290	Time: 12.7505	Final Velocity: 12.7622	Joules Lost3041.66	
+Current Velocity: 12.7622
+Coast	Distance: 300	Time: 12.4506	Final Velocity: 12.4621	Joules Lost3041.66	
+Current Velocity: 12.4621
+Coast	Distance: 310	Time: 12.1544	Final Velocity: 12.1657	Joules Lost3041.66	
+Current Velocity: 12.1657
+Coast	Distance: 320	Time: 11.8504	Final Velocity: 11.8616	Joules Lost3041.66	
+Current Velocity: 11.8616
+Coast	Distance: 330	Time: 11.5391	Final Velocity: 11.5502	Joules Lost3041.66	
+Current Velocity: 11.5502
+Coast	Distance: 340	Time: 11.2206	Final Velocity: 11.2316	Joules Lost3041.66	
+Current Velocity: 11.2316
+Coast	Distance: 350	Time: 10.9061	Final Velocity: 10.9169	Joules Lost3041.66	
+Current Velocity: 10.9169
+Coast	Distance: 360	Time: 10.5846	Final Velocity: 10.5953	Joules Lost3041.66	
+Current Velocity: 10.5953
+Coast	Distance: 370	Time: 10.2565	Final Velocity: 10.267	Joules Lost3041.66	
+Current Velocity: 10.267
+Coast	Distance: 380	Time: 9.9219	Final Velocity: 9.9323	Joules Lost3041.66	
+Current Velocity: 9.9323
+Coast	Distance: 390	Time: 9.58103	Final Velocity: 9.5913	Joules Lost3041.66	
+Current Velocity: 9.5913
+Coast	Distance: 400	Time: 9.23408	Final Velocity: 9.24422	Joules Lost3041.66	
+Current Velocity: 9.24422
+Coast	Distance: 410	Time: 8.87118	Final Velocity: 8.8812	Joules Lost3041.66	
+Current Velocity: 8.8812
+Coast	Distance: 420	Time: 8.50274	Final Velocity: 8.51264	Joules Lost3041.66	
+Current Velocity: 8.51264
+Coast	Distance: 430	Time: 8.3125	Final Velocity: 13.5409	Joules Lost4012.21	
+Current Velocity: 13.5409
+Coast	Distance: 440	Time: 13.2428	Final Velocity: 13.2547	Joules Lost4012.21	
+Current Velocity: 13.2547
+Coast	Distance: 450	Time: 12.9484	Final Velocity: 12.9601	Joules Lost4012.21	
+Current Velocity: 12.9601
+Coast	Distance: 460	Time: 12.6576	Final Velocity: 12.6691	Joules Lost4012.21	
+Current Velocity: 12.6691
+Coast	Distance: 470	Time: 12.3588	Final Velocity: 12.3702	Joules Lost4012.21	
+Current Velocity: 12.3702
+Coast	Distance: 480	Time: 12.0523	Final Velocity: 12.0636	Joules Lost4012.21	
+Current Velocity: 12.0636
+Coast	Distance: 490	Time: 11.7497	Final Velocity: 11.7608	Joules Lost4012.21	
+Current Velocity: 11.7608
+Coast	Distance: 500	Time: 11.4396	Final Velocity: 11.4506	Joules Lost4012.21	
+Current Velocity: 11.4506
+Coast	Distance: 510	Time: 11.1223	Final Velocity: 11.1332	Joules Lost4012.21	
+Current Velocity: 11.1332
+Coast	Distance: 520	Time: 10.7982	Final Velocity: 10.809	Joules Lost4012.21	
+Current Velocity: 10.809
+Coast	Distance: 530	Time: 10.4675	Final Velocity: 10.4781	Joules Lost4012.21	
+Current Velocity: 10.4781
+Coast	Distance: 540	Time: 10.1303	Final Velocity: 10.1408	Joules Lost4012.21	
+Current Velocity: 10.1408
+Coast	Distance: 550	Time: 9.78687	Final Velocity: 9.79721	Joules Lost4012.21	
+Current Velocity: 9.79721
+Coast	Distance: 560	Time: 9.4374	Final Velocity: 9.44762	Joules Lost4012.21	
+Current Velocity: 9.44762
+Coast	Distance: 570	Time: 9.08207	Final Velocity: 9.09216	Joules Lost4012.21	
+Current Velocity: 9.09216
+Coast	Distance: 580	Time: 8.72102	Final Velocity: 8.73099	Joules Lost4012.21	
+Current Velocity: 8.73099
+Coast	Distance: 590	Time: 8.34454	Final Velocity: 8.35439	Joules Lost4012.21	
+Current Velocity: 8.35439
+Coast	Distance: 600	Time: 8.40625	Final Velocity: 13.4086	Joules Lost4974.45	
+Current Velocity: 13.4086
+Coast	Distance: 610	Time: 13.1003	Final Velocity: 13.1121	Joules Lost4974.45	
+Current Velocity: 13.1121
+Coast	Distance: 620	Time: 12.8077	Final Velocity: 12.8193	Joules Lost4974.45	
+Current Velocity: 12.8193
+Coast	Distance: 630	Time: 12.5071	Final Velocity: 12.5186	Joules Lost4974.45	
+Current Velocity: 12.5186
+Coast	Distance: 640	Time: 12.2101	Final Velocity: 12.2215	Joules Lost4974.45	
+Current Velocity: 12.2215
+Coast	Distance: 650	Time: 11.9055	Final Velocity: 11.9167	Joules Lost4974.45	
+Current Velocity: 11.9167
+Coast	Distance: 660	Time: 11.5935	Final Velocity: 11.6046	Joules Lost4974.45	
+Current Velocity: 11.6046
+Coast	Distance: 670	Time: 11.2853	Final Velocity: 11.2962	Joules Lost4974.45	
+Current Velocity: 11.2962
+Coast	Distance: 680	Time: 10.97	Final Velocity: 10.9808	Joules Lost4974.45	
+Current Velocity: 10.9808
+Coast	Distance: 690	Time: 10.6477	Final Velocity: 10.6584	Joules Lost4974.45	
+Current Velocity: 10.6584
+Coast	Distance: 700	Time: 10.3188	Final Velocity: 10.3294	Joules Lost4974.45	
+Current Velocity: 10.3294
+Coast	Distance: 710	Time: 9.98347	Final Velocity: 9.99389	Joules Lost4974.45	
+Current Velocity: 9.99389
+Coast	Distance: 720	Time: 9.64185	Final Velocity: 9.65214	Joules Lost4974.45	
+Current Velocity: 9.65214
+Coast	Distance: 730	Time: 9.29416	Final Velocity: 9.30433	Joules Lost4974.45	
+Current Velocity: 9.30433
+Coast	Distance: 740	Time: 8.93052	Final Velocity: 8.94056	Joules Lost4974.45	
+Current Velocity: 8.94056
+Coast	Distance: 750	Time: 8.56137	Final Velocity: 8.57128	Joules Lost4974.45	
+Current Velocity: 8.57128
+Coast	Distance: 760	Time: 8.28125	Final Velocity: 13.59	Joules Lost5948.05	
+Current Velocity: 13.59
+Coast	Distance: 770	Time: 13.2912	Final Velocity: 13.3031	Joules Lost5948.05	
+Current Velocity: 13.3031
+Coast	Distance: 780	Time: 12.9962	Final Velocity: 13.0079	Joules Lost5948.05	
+Current Velocity: 13.0079
+Coast	Distance: 790	Time: 12.7048	Final Velocity: 12.7164	Joules Lost5948.05	
+Current Velocity: 12.7164
+Coast	Distance: 800	Time: 12.4054	Final Velocity: 12.4169	Joules Lost5948.05	
+Current Velocity: 12.4169
+Coast	Distance: 810	Time: 12.0984	Final Velocity: 12.1097	Joules Lost5948.05	
+Current Velocity: 12.1097
+Coast	Distance: 820	Time: 11.7952	Final Velocity: 11.8063	Joules Lost5948.05	
+Current Velocity: 11.8063
+Coast	Distance: 830	Time: 11.4845	Final Velocity: 11.4956	Joules Lost5948.05	
+Current Velocity: 11.4956
+Coast	Distance: 840	Time: 11.1668	Final Velocity: 11.1776	Joules Lost5948.05	
+Current Velocity: 11.1776
+Coast	Distance: 850	Time: 10.8421	Final Velocity: 10.8529	Joules Lost5948.05	
+Current Velocity: 10.8529
+Coast	Distance: 860	Time: 10.5214	Final Velocity: 10.532	Joules Lost5948.05	
+Current Velocity: 10.532
+Coast	Distance: 870	Time: 10.194	Final Velocity: 10.2045	Joules Lost5948.05	
+Current Velocity: 10.2045
+Coast	Distance: 880	Time: 9.8602	Final Velocity: 9.87057	Joules Lost5948.05	
+Current Velocity: 9.87057
+Coast	Distance: 890	Time: 9.50983	Final Velocity: 9.52007	Joules Lost5948.05	
+Current Velocity: 9.52007
+Coast	Distance: 900	Time: 9.15361	Final Velocity: 9.16373	Joules Lost5948.05	
+Current Velocity: 9.16373
+Coast	Distance: 910	Time: 8.79169	Final Velocity: 8.80169	Joules Lost5948.05	
+Current Velocity: 8.80169
+Coast	Distance: 920	Time: 8.41435	Final Velocity: 8.42422	Joules Lost5948.05	
+Current Velocity: 8.42422
+Coast	Distance: 930	Time: 8.375	Final Velocity: 13.467	Joules Lost6913.97	
+Current Velocity: 13.467
+Coast	Distance: 940	Time: 13.158	Final Velocity: 13.1698	Joules Lost6913.97	
+Current Velocity: 13.1698
+Coast	Distance: 950	Time: 12.8646	Final Velocity: 12.8763	Joules Lost6913.97	
+Current Velocity: 12.8763
+Coast	Distance: 960	Time: 12.5633	Final Velocity: 12.5748	Joules Lost6913.97	
+Current Velocity: 12.5748
+Coast	Distance: 970	Time: 12.2657	Final Velocity: 12.277	Joules Lost6913.97	
+Current Velocity: 12.277
+Coast	Distance: 980	Time: 11.9604	Final Velocity: 11.9716	Joules Lost6913.97	
+Current Velocity: 11.9716
+Coast	Distance: 990	Time: 11.6477	Final Velocity: 11.6588	Joules Lost6913.97	
+Current Velocity: 11.6588
+Coast	Distance: 1000	Time: 11.3388	Final Velocity: 11.3498	Joules Lost6913.97	
+Time: 1078.02
+0.919833
+M/KWH: 320.82
+Current Velocity: 0
+Coast	Distance: 10	Time: 10.875	Final Velocity: 11.175	Joules Lost1099.33	
+Current Velocity: 11.175
+Coast	Distance: 20	Time: 10.8395	Final Velocity: 10.8502	Joules Lost1099.33	
+Current Velocity: 10.8502
+Coast	Distance: 30	Time: 10.5188	Final Velocity: 10.5295	Joules Lost1099.33	
+Current Velocity: 10.5295
+Coast	Distance: 40	Time: 10.1915	Final Velocity: 10.202	Joules Lost1099.33	
+Current Velocity: 10.202
+Coast	Distance: 50	Time: 9.85768	Final Velocity: 9.86805	Joules Lost1099.33	
+Current Velocity: 9.86805
+Coast	Distance: 60	Time: 9.50734	Final Velocity: 9.51759	Joules Lost1099.33	
+Current Velocity: 9.51759
+Coast	Distance: 70	Time: 9.15116	Final Velocity: 9.16127	Joules Lost1099.33	
+Current Velocity: 9.16127
+Coast	Distance: 80	Time: 8.78927	Final Velocity: 8.79926	Joules Lost1099.33	
+Current Velocity: 8.79926
+Coast	Distance: 90	Time: 8.41195	Final Velocity: 8.42182	Joules Lost1099.33	
+Current Velocity: 8.42182
+Coast	Distance: 100	Time: 8.375	Final Velocity: 13.465	Joules Lost2065.13	
+Current Velocity: 13.465
+Coast	Distance: 110	Time: 13.156	Final Velocity: 13.1678	Joules Lost2065.13	
+Current Velocity: 13.1678
+Coast	Distance: 120	Time: 12.8627	Final Velocity: 12.8743	Joules Lost2065.13	
+Current Velocity: 12.8743
+Coast	Distance: 130	Time: 12.5614	Final Velocity: 12.5729	Joules Lost2065.13	
+Current Velocity: 12.5729
+Coast	Distance: 140	Time: 12.2637	Final Velocity: 12.2751	Joules Lost2065.13	
+Current Velocity: 12.2751
+Coast	Distance: 150	Time: 11.9585	Final Velocity: 11.9697	Joules Lost2065.13	
+Current Velocity: 11.9697
+Coast	Distance: 160	Time: 11.6458	Final Velocity: 11.6569	Joules Lost2065.13	
+Current Velocity: 11.6569
+Coast	Distance: 170	Time: 11.337	Final Velocity: 11.348	Joules Lost2065.13	
+Current Velocity: 11.348
+Coast	Distance: 180	Time: 11.021	Final Velocity: 11.0319	Joules Lost2065.13	
+Current Velocity: 11.0319
+Coast	Distance: 190	Time: 10.6982	Final Velocity: 10.7089	Joules Lost2065.13	
+Current Velocity: 10.7089
+Coast	Distance: 200	Time: 10.3686	Final Velocity: 10.3792	Joules Lost2065.13	
+Current Velocity: 10.3792
+Coast	Distance: 210	Time: 10.0327	Final Velocity: 10.0431	Joules Lost2065.13	
+Current Velocity: 10.0431
+Coast	Distance: 220	Time: 9.69045	Final Velocity: 9.70076	Joules Lost2065.13	
+Current Velocity: 9.70076
+Coast	Distance: 230	Time: 9.34217	Final Velocity: 9.35235	Joules Lost2065.13	
+Current Velocity: 9.35235
+Coast	Distance: 240	Time: 8.98799	Final Velocity: 8.99805	Joules Lost2065.13	
+Current Velocity: 8.99805
+Coast	Distance: 250	Time: 8.61814	Final Velocity: 8.62807	Joules Lost2065.13	
+Current Velocity: 8.62807
+Coast	Distance: 260	Time: 8.25	Final Velocity: 13.6374	Joules Lost3041.66	
+Current Velocity: 13.6374
+Coast	Distance: 270	Time: 13.3381	Final Velocity: 13.35	Joules Lost3041.66	
+Current Velocity: 13.35
+Coast	Distance: 280	Time: 13.0425	Final Velocity: 13.0543	Joules Lost3041.66	
+Current Velocity: 13.0543
+Coast	Distance: 290	Time: 12.7505	Final Velocity: 12.7622	Joules Lost3041.66	
+Current Velocity: 12.7622
+Coast	Distance: 300	Time: 12.4506	Final Velocity: 12.4621	Joules Lost3041.66	
+Current Velocity: 12.4621
+Coast	Distance: 310	Time: 12.1544	Final Velocity: 12.1657	Joules Lost3041.66	
+Current Velocity: 12.1657
+Coast	Distance: 320	Time: 11.8504	Final Velocity: 11.8616	Joules Lost3041.66	
+Current Velocity: 11.8616
+Coast	Distance: 330	Time: 11.5391	Final Velocity: 11.5502	Joules Lost3041.66	
+Current Velocity: 11.5502
+Coast	Distance: 340	Time: 11.2206	Final Velocity: 11.2316	Joules Lost3041.66	
+Current Velocity: 11.2316
+Coast	Distance: 350	Time: 10.9061	Final Velocity: 10.9169	Joules Lost3041.66	
+Current Velocity: 10.9169
+Coast	Distance: 360	Time: 10.5846	Final Velocity: 10.5953	Joules Lost3041.66	
+Current Velocity: 10.5953
+Coast	Distance: 370	Time: 10.2565	Final Velocity: 10.267	Joules Lost3041.66	
+Current Velocity: 10.267
+Coast	Distance: 380	Time: 9.9219	Final Velocity: 9.9323	Joules Lost3041.66	
+Current Velocity: 9.9323
+Coast	Distance: 390	Time: 9.58103	Final Velocity: 9.5913	Joules Lost3041.66	
+Current Velocity: 9.5913
+Coast	Distance: 400	Time: 9.23408	Final Velocity: 9.24422	Joules Lost3041.66	
+Current Velocity: 9.24422
+Coast	Distance: 410	Time: 8.87118	Final Velocity: 8.8812	Joules Lost3041.66	
+Current Velocity: 8.8812
+Coast	Distance: 420	Time: 8.50274	Final Velocity: 8.51264	Joules Lost3041.66	
+Current Velocity: 8.51264
+Coast	Distance: 430	Time: 8.3125	Final Velocity: 13.5409	Joules Lost4012.21	
+Current Velocity: 13.5409
+Coast	Distance: 440	Time: 13.2428	Final Velocity: 13.2547	Joules Lost4012.21	
+Current Velocity: 13.2547
+Coast	Distance: 450	Time: 12.9484	Final Velocity: 12.9601	Joules Lost4012.21	
+Current Velocity: 12.9601
+Coast	Distance: 460	Time: 12.6576	Final Velocity: 12.6691	Joules Lost4012.21	
+Current Velocity: 12.6691
+Coast	Distance: 470	Time: 12.3588	Final Velocity: 12.3702	Joules Lost4012.21	
+Current Velocity: 12.3702
+Coast	Distance: 480	Time: 12.0523	Final Velocity: 12.0636	Joules Lost4012.21	
+Current Velocity: 12.0636
+Coast	Distance: 490	Time: 11.7497	Final Velocity: 11.7608	Joules Lost4012.21	
+Current Velocity: 11.7608
+Coast	Distance: 500	Time: 11.4396	Final Velocity: 11.4506	Joules Lost4012.21	
+Current Velocity: 11.4506
+Coast	Distance: 510	Time: 11.1223	Final Velocity: 11.1332	Joules Lost4012.21	
+Current Velocity: 11.1332
+Coast	Distance: 520	Time: 10.7982	Final Velocity: 10.809	Joules Lost4012.21	
+Current Velocity: 10.809
+Coast	Distance: 530	Time: 10.4675	Final Velocity: 10.4781	Joules Lost4012.21	
+Current Velocity: 10.4781
+Coast	Distance: 540	Time: 10.1303	Final Velocity: 10.1408	Joules Lost4012.21	
+Current Velocity: 10.1408
+Coast	Distance: 550	Time: 9.78687	Final Velocity: 9.79721	Joules Lost4012.21	
+Current Velocity: 9.79721
+Coast	Distance: 560	Time: 9.4374	Final Velocity: 9.44762	Joules Lost4012.21	
+Current Velocity: 9.44762
+Coast	Distance: 570	Time: 9.08207	Final Velocity: 9.09216	Joules Lost4012.21	
+Current Velocity: 9.09216
+Coast	Distance: 580	Time: 8.72102	Final Velocity: 8.73099	Joules Lost4012.21	
+Current Velocity: 8.73099
+Coast	Distance: 590	Time: 8.34454	Final Velocity: 8.35439	Joules Lost4012.21	
+Current Velocity: 8.35439
+Coast	Distance: 600	Time: 8.40625	Final Velocity: 13.4086	Joules Lost4974.45	
+Current Velocity: 13.4086
+Coast	Distance: 610	Time: 13.1003	Final Velocity: 13.1121	Joules Lost4974.45	
+Current Velocity: 13.1121
+Coast	Distance: 620	Time: 12.8077	Final Velocity: 12.8193	Joules Lost4974.45	
+Current Velocity: 12.8193
+Coast	Distance: 630	Time: 12.5071	Final Velocity: 12.5186	Joules Lost4974.45	
+Current Velocity: 12.5186
+Coast	Distance: 640	Time: 12.2101	Final Velocity: 12.2215	Joules Lost4974.45	
+Current Velocity: 12.2215
+Coast	Distance: 650	Time: 11.9055	Final Velocity: 11.9167	Joules Lost4974.45	
+Current Velocity: 11.9167
+Coast	Distance: 660	Time: 11.5935	Final Velocity: 11.6046	Joules Lost4974.45	
+Current Velocity: 11.6046
+Coast	Distance: 670	Time: 11.2853	Final Velocity: 11.2962	Joules Lost4974.45	
+Current Velocity: 11.2962
+Coast	Distance: 680	Time: 10.97	Final Velocity: 10.9808	Joules Lost4974.45	
+Current Velocity: 10.9808
+Coast	Distance: 690	Time: 10.6477	Final Velocity: 10.6584	Joules Lost4974.45	
+Current Velocity: 10.6584
+Coast	Distance: 700	Time: 10.3188	Final Velocity: 10.3294	Joules Lost4974.45	
+Current Velocity: 10.3294
+Coast	Distance: 710	Time: 9.98347	Final Velocity: 9.99389	Joules Lost4974.45	
+Current Velocity: 9.99389
+Coast	Distance: 720	Time: 9.64185	Final Velocity: 9.65214	Joules Lost4974.45	
+Current Velocity: 9.65214
+Coast	Distance: 730	Time: 9.29416	Final Velocity: 9.30433	Joules Lost4974.45	
+Current Velocity: 9.30433
+Coast	Distance: 740	Time: 8.93052	Final Velocity: 8.94056	Joules Lost4974.45	
+Current Velocity: 8.94056
+Coast	Distance: 750	Time: 8.56137	Final Velocity: 8.57128	Joules Lost4974.45	
+Current Velocity: 8.57128
+Coast	Distance: 760	Time: 8.28125	Final Velocity: 13.59	Joules Lost5948.05	
+Current Velocity: 13.59
+Coast	Distance: 770	Time: 13.2912	Final Velocity: 13.3031	Joules Lost5948.05	
+Current Velocity: 13.3031
+Coast	Distance: 780	Time: 12.9962	Final Velocity: 13.0079	Joules Lost5948.05	
+Current Velocity: 13.0079
+Coast	Distance: 790	Time: 12.7048	Final Velocity: 12.7164	Joules Lost5948.05	
+Current Velocity: 12.7164
+Coast	Distance: 800	Time: 12.4054	Final Velocity: 12.4169	Joules Lost5948.05	
+Current Velocity: 12.4169
+Coast	Distance: 810	Time: 12.0984	Final Velocity: 12.1097	Joules Lost5948.05	
+Current Velocity: 12.1097
+Coast	Distance: 820	Time: 11.7952	Final Velocity: 11.8063	Joules Lost5948.05	
+Current Velocity: 11.8063
+Coast	Distance: 830	Time: 11.4845	Final Velocity: 11.4956	Joules Lost5948.05	
+Current Velocity: 11.4956
+Coast	Distance: 840	Time: 11.1668	Final Velocity: 11.1776	Joules Lost5948.05	
+Current Velocity: 11.1776
+Coast	Distance: 850	Time: 10.8421	Final Velocity: 10.8529	Joules Lost5948.05	
+Current Velocity: 10.8529
+Coast	Distance: 860	Time: 10.5214	Final Velocity: 10.532	Joules Lost5948.05	
+Current Velocity: 10.532
+Coast	Distance: 870	Time: 10.194	Final Velocity: 10.2045	Joules Lost5948.05	
+Current Velocity: 10.2045
+Coast	Distance: 880	Time: 9.8602	Final Velocity: 9.87057	Joules Lost5948.05	
+Current Velocity: 9.87057
+Coast	Distance: 890	Time: 9.50983	Final Velocity: 9.52007	Joules Lost5948.05	
+Current Velocity: 9.52007
+Coast	Distance: 900	Time: 9.15361	Final Velocity: 9.16373	Joules Lost5948.05	
+Current Velocity: 9.16373
+Coast	Distance: 910	Time: 8.79169	Final Velocity: 8.80169	Joules Lost5948.05	
+Current Velocity: 8.80169
+Coast	Distance: 920	Time: 8.41435	Final Velocity: 8.42422	Joules Lost5948.05	
+Current Velocity: 8.42422
+Coast	Distance: 930	Time: 8.375	Final Velocity: 13.467	Joules Lost6913.97	
+Current Velocity: 13.467
+Coast	Distance: 940	Time: 13.158	Final Velocity: 13.1698	Joules Lost6913.97	
+Current Velocity: 13.1698
+Coast	Distance: 950	Time: 12.8646	Final Velocity: 12.8763	Joules Lost6913.97	
+Current Velocity: 12.8763
+Coast	Distance: 960	Time: 12.5633	Final Velocity: 12.5748	Joules Lost6913.97	
+Current Velocity: 12.5748
+Coast	Distance: 970	Time: 12.2657	Final Velocity: 12.277	Joules Lost6913.97	
+Current Velocity: 12.277
+Coast	Distance: 980	Time: 11.9604	Final Velocity: 11.9716	Joules Lost6913.97	
+Current Velocity: 11.9716
+Coast	Distance: 990	Time: 11.6477	Final Velocity: 11.6588	Joules Lost6913.97	
+Current Velocity: 11.6588
+Coast	Distance: 1000	Time: 11.3388	Final Velocity: 11.3498	Joules Lost6913.97	

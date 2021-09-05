@@ -12,6 +12,7 @@ class track
     double get_track_length();
     void update_coordinates(double distance);
     double get_incline();
+    track& operator = (const track &T);
 
   private:
 
@@ -24,6 +25,7 @@ class track
     double m_incline;
     double m_coord_angle;
     int m_coord_number;
+    int m_total_coords;
     int m_direction;
 
     vector<vector<double>> m_coordinates;

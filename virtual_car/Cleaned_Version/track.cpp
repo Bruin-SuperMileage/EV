@@ -7,6 +7,7 @@
 #include <chrono>  // for high_resolution_clock
 
 using namespace std;
+#define VERBOSE 0
 
 track::track()
 {
@@ -38,6 +39,7 @@ track::track()
     m_coord_number = 0;
     m_current_coord = m_coordinates[m_coord_number];
     m_next_coord = m_coordinates[m_coord_number + 1];
+    m_total_coords = m_coordinates.size();
     m_incline = get_incline();
     m_coord_angle = angle_between_coordinates();
 
@@ -52,6 +54,24 @@ track::track()
     m_coord_angle = angle_between_coordinates();
     
 }
+
+
+track& track::operator = (const track &T){
+
+    if(this == &T)
+        return *this;
+
+    m_total_length = T.m_total_length;
+    m_coord_number = T.m_coord_number;
+    m_coordinates = T.m_coordinates;
+    m_current_coord = T.m_current_coord;
+    m_next_coord = T.m_next_coord;
+    m_total_coords = T.m_total_coords;
+    m_incline = T.m_incline;
+    m_coord_angle = T.m_coord_angle;
+    return *this;
+}
+
 
 double track::get_track_length() {return m_total_length;}
 
@@ -95,9 +115,19 @@ double track::angle_between_coordinates()
 
 void track::update_coordinates(double distance){
 
+    
     while(distance > m_next_coord[3]){
-        cout << "Coordinate_Change" << endl;
+        if(VERBOSE) 
+            cout << "Coordinate_Change" << endl;
         m_coord_number++;
+
+        if(m_coord_number == m_total_coords){
+            m_coord_number = 0;
+            m_current_coord = m_coordinates[m_coord_number];
+            m_next_coord = m_coordinates[m_coord_number + 1];
+            break;
+        }
+
         m_current_coord = m_coordinates[m_coord_number];
         m_next_coord = m_coordinates[m_coord_number + 1];
 
@@ -107,7 +137,8 @@ void track::update_coordinates(double distance){
             m_direction = 1;
 
         m_incline = get_incline();
-        cout << "Incline: " << m_incline << endl;
+        if(VERBOSE) 
+            cout << "Incline: " << m_incline << endl;
         m_coord_angle = angle_between_coordinates();
     }
 }

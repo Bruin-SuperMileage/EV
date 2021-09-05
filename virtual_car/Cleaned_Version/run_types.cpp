@@ -1,0 +1,334 @@
+#include "run_types.h"
+#include <fstream>
+#define VERBOSE 0
+
+vector<double> coast(motor* Motor, physical_forces* Phys, track* Track, double &starting_speed, double &joules, int run_distance, int coast_distance){
+
+    double time = 0.0;
+    double incline = 0.0;
+    int throttle = 0;
+    vector<double> ret;
+
+    double velocity = starting_speed;
+    double acceleration = 0.0;
+    double distance = 0.0;
+    double total_distance = run_distance + coast_distance;
+
+    while(distance < total_distance){
+            
+        incline = Track->get_incline();
+        double net_force = Motor->get_force(0, velocity) + Phys->get_grav_x(incline) + Phys->get_drag(velocity) + Phys->get_friction(incline);
+
+        acceleration = net_force / CAR_MASS;
+        velocity = max(0.0, velocity + acceleration * TIC_LENGTH);
+        distance += velocity * TIC_LENGTH;
+
+        if(distance > run_distance){
+            ret.push_back(velocity);
+            ret.push_back(joules);
+        }
+
+        Track->update_coordinates(distance);
+
+        joules += max(0.0, Motor->get_current() * velocity * TIC_LENGTH);
+            
+        time += TIC_LENGTH;
+
+        if(VERBOSE){
+            cout << "Made it to Coast" << endl;
+            cout << "   Velocity: " << velocity << endl;
+            cout << "   Distance: " << distance << endl;
+            cout << "Joules: " << joules << endl;
+        }
+
+        if(velocity == 0){
+            if(distance < run_distance){
+                ret.push_back(-1);
+                ret.push_back(-1);
+            }
+            ret.push_back(-1);
+            return ret;
+        }
+            
+    }
+
+    ret.push_back(time);
+    return ret;
+}
+
+vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, double &starting_speed, double &joules, int run_distance, int coast_distance){
+
+    double time = 0.0;
+    double incline = 0.0;
+    int throttle = 0;
+
+    double velocity = starting_speed;
+    double acceleration = 0.0;
+    double distance = 0.0;
+    vector<double> ret;
+
+    while(distance < run_distance){
+
+        incline = Track->get_incline();
+        double net_force = Motor->get_force(255, velocity) + Phys->get_grav_x(incline) + Phys->get_drag(velocity) + Phys->get_friction(incline);
+
+        acceleration = net_force / CAR_MASS;
+        velocity = max(0.0, velocity + acceleration * TIC_LENGTH);
+        distance += velocity * TIC_LENGTH;
+
+        Track->update_coordinates(distance);
+
+        joules += max(0.0, Motor->get_current() * velocity * TIC_LENGTH);
+        time += TIC_LENGTH;
+
+        if(VERBOSE){
+            cout << "   Velocity: " << velocity << endl;
+            cout << "   Distance: " << distance << endl;
+            cout << "Made it to Run 10" << endl;
+        }
+    }
+
+    ret.push_back(velocity);
+    ret.push_back(joules);
+
+    while(distance < run_distance + coast_distance){
+
+        incline = Track->get_incline();
+        double net_force = Motor->get_force(0, velocity) + Phys->get_grav_x(incline) + Phys->get_drag(velocity) + Phys->get_friction(incline);
+
+        acceleration = net_force / CAR_MASS;
+        velocity = max(0.0, velocity + acceleration * TIC_LENGTH);
+        distance += velocity * TIC_LENGTH;
+
+        Track->update_coordinates(distance);
+
+        joules += max(0.0, Motor->get_current() * velocity * TIC_LENGTH);
+        time += TIC_LENGTH;
+
+        if(VERBOSE){
+            cout << "   Velocity: " << velocity << endl;
+            cout << "   Distance: " << distance << endl;
+            cout << "Made it to Run 100" << endl;
+        }
+
+        
+        if(velocity == 0){
+            if(distance < run_distance){
+                ret.push_back(-1);
+                ret.push_back(-1);
+            }
+            ret.push_back(-1);
+            return ret;
+        }
+    }
+
+    ret.push_back(time);
+    return ret;
+}
+
+
+double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double starting_speed, int lap_number, double &joules, double threshold, int run_distance, int coast_distance, string filename){
+
+    double time = 0.0;
+    double incline = 0.0;
+    int throttle = 0;
+    double distance = 0.0;
+
+    double velocity = starting_speed;
+    double acceleration = 0.0;
+    
+    int cur_lap = 0;
+
+    track cur_track = *Track;
+    track track_run;
+    track track_coast;
+
+    double cur_speed = starting_speed;
+    double speed_run;
+    double speed_coast;
+    
+
+    double cur_joules = joules;
+    double joules_run;
+    double joules_coast;
+    
+
+    //TESTING INTS
+    int coast_num = 0;
+    int run_num = 0;
+
+    while(cur_lap < lap_number)
+        {
+
+            // TODO: MAKE ASSIGNMENT OPERATOR FOR TRACK (AND ANYTHING ELSE WE NEED) 
+
+            track_run = cur_track;
+            track_coast = cur_track;
+
+            speed_run = cur_speed;
+            speed_coast = cur_speed;
+
+            
+            joules_run = cur_joules;
+            joules_coast = cur_joules;
+
+            vector<double> run_data = run_coast(Motor, Phys, &track_run, speed_run, joules_run, run_distance, coast_distance);
+            vector<double> coast_data = coast(Motor, Phys, &track_coast, speed_coast, joules_coast, run_distance, coast_distance);
+            distance += run_distance;
+
+            double time_diff =  run_data[2] - coast_data[2];
+            double joules_diff = joules_run - joules_coast;
+           
+            double ratio = joules_diff / time_diff;
+
+            if(VERBOSE){
+                cout << "   Velocity: " << velocity << endl;
+                cout << "   Distance: " << distance << endl;
+                cout << "Ratio: " << ratio << endl;
+            }
+
+            ofstream file;
+            file.open("./results/" + filename + ".txt", fstream::app);
+            file.precision(4);
+
+            file << "Current Velocity: " << cur_speed << "\t";
+
+           if(ratio > threshold || coast_data[2] == -1){
+                cur_track = track_run;
+                cur_speed = run_data[0];
+                cur_joules = run_data[1];
+                time += run_data[2];
+                run_num++;
+
+                file << "Run  " << "\t";
+                file << "Distance: " << distance << "\t" << "Time: " <<  run_data[2] << "\t";
+                file << "Final Velocity: " << run_data[0] << "\t" << "Joules Lost: " << run_data[1] << "\t";
+
+            }
+
+           else{
+                cur_track = track_coast;
+                cur_speed = coast_data[0];
+                cur_joules = coast_data[1];
+                time += coast_data[2];
+                coast_num++;
+
+                file << "Coast" << "\t";
+                file << "Distance: " << distance << "\t" << "Time: " <<  coast_data[2] << "\t";
+                file << "Final Velocity: " << coast_data[0] << "\t" << "Joules Lost: " << coast_data[1] << "\t";
+           }
+
+            file << endl;
+            file.close();
+
+            //grab track conditions
+            if(distance > Track->get_track_length()){
+                distance -= Track->get_track_length();
+                cur_lap++;
+            }
+
+        }
+    
+    cout << "Runs: " << run_num << endl;
+    cout << "Coasts: " << coast_num << endl;
+
+    joules = cur_joules;
+    return time;
+}
+
+
+double run(motor* Motor, physical_forces* Phys, track* Track, double starting_speed, int lap_number, double &joules)
+{      
+    double time = 0.0;
+    double incline = 0.0;
+    int throttle = 0;
+
+    double velocity = starting_speed;
+    double acceleration = 0.0;
+    double distance = 0.0;
+    int cur_lap = 0;
+
+        
+    //auto start = chrono::high_resolution_clock::now();
+    //int tics = 0;
+    while(cur_lap < lap_number)
+    {
+        //double u = Car->get_velocity();
+        //grab last velocity
+        cout << cur_lap << endl;
+
+        if(!kbhit()){
+            throttle = 0; //don't add to engine if not pressed
+
+        }
+        else
+            if(getch() == 'a'){ //use getch() for real time run
+            throttle = 250; //sets force ie engine is pressed
+            //cout << "Engine Pressed" << endl;
+            }
+            
+        incline = Track->get_incline();
+        double net_force = Motor->get_force(throttle, velocity) + Phys->get_grav_x(incline) + Phys->get_drag(velocity) + Phys->get_friction(incline);
+
+        acceleration = net_force / CAR_MASS;
+        velocity = max(0.0, velocity + acceleration * TIC_LENGTH);
+        distance += velocity * TIC_LENGTH;
+        
+
+        Track->update_coordinates(distance);
+
+        //grab track conditions
+        if(distance > Track->get_track_length()){
+            distance -= Track->get_track_length();
+            cur_lap++;
+        }
+        
+        //adds to total time of run
+        joules += Motor->get_current() * velocity * TIC_LENGTH;
+        time += TIC_LENGTH;
+
+        if(VERBOSE){
+            cout << "   Velocity: " << velocity << endl;
+            cout << "   Distance: " << distance << endl;
+            cout << "Joules: " << joules << endl;
+        }
+
+        Sleep(15); //give program enough time to register next keyboard input
+
+        //TIMING TEST///////////////////////////
+        
+        #ifdef TIME
+        auto finish = chrono::high_resolution_clock::now();
+        chrono::duration<double> elapsed = finish - start;
+
+        cout << elapsed.count() << endl;
+        #endif    
+        //cout << "time: " << t << " s"<< endl;
+        //cout << "average velocity: " << v*2.237 << " mph" << endl;
+        //cout << "distance traveled: " << s << " m" << endl;
+        //cout << "Time: " << elapsed.count() << endl;
+    }
+    //cout << tics << endl;
+    
+    return time;
+}
+
+
+//TODO: CHANGE THE VELOCITY TO LINE UP WITH RUNGE KUTTA
+double getNewVelocity(double net_force, double old_velocity){
+
+//update parameters
+    double acceleration = net_force / CAR_MASS;
+
+    // Calculate c1, c2, c3, c4
+    double c1 = acceleration*1;
+    double c2 = acceleration*(1+c1/2);
+    double c3 = acceleration*(1+c2/2);
+    double c4 = acceleration*(1+c3);
+        
+    // Calculate instanteous rpm 
+    double new_velocity = c1/6 + c2/3 + c3/3 + c4/6 + old_velocity;
+    return new_velocity;
+}
+
+

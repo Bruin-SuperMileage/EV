@@ -35,7 +35,8 @@ class motor
 
     // Simulation functions
 
-    double get_force(int throttle, double velocity); 
+    double get_force(int throttle, double velocity);
+    double get_current(); 
 
 
   private:
@@ -50,6 +51,7 @@ class motor
     double m_motor_sprocket; 
     double m_gear_ratio;
     double m_wheel_sprocket; 
+    double m_current;
 
     //timing
     int m_step;

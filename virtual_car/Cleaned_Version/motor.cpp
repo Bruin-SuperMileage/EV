@@ -32,6 +32,8 @@ double motor::get_voltage(int throttle) //throttle will be taken from UI (IDK ho
     return voltage;
 }
 
+double motor::get_current() {return m_current;}
+
 // Automatically updates m_rpm
 double motor::getTorque(int throttle, double velocity)
 {  
@@ -41,14 +43,15 @@ double motor::getTorque(int throttle, double velocity)
     
     // Update values
     double deltaV = voltage - angularVelocity/(VELOCITY_CONSTANT*RPM_CONVERSION_CONSTANT);
-    double current = deltaV/sqrt(pow(WINDING_RESISTANCE,2) + pow(angularVelocity*INDUCTANCE, 2));
-    double torque = TORQUE_CONSTANT*current*GEAR_RATIO;
+    m_current = deltaV/sqrt(pow(WINDING_RESISTANCE,2) + pow(angularVelocity*INDUCTANCE, 2));
+    double torque = TORQUE_CONSTANT*m_current*GEAR_RATIO;
 
-    
+    /*
     cout << "Voltage: " << voltage << endl;
     cout << "DeltaV: " << deltaV << endl;
-    cout << "Current: " << current << endl;
-    
+    cout << "Current: " << m_current << endl;
+    */
+
     return torque;
 }
 
@@ -57,7 +60,7 @@ double motor::get_force(int throttle, double current_velocity)
     // Compute and return motor output force
     double torque = getTorque(throttle, current_velocity);
     double force = max(0.0, torque/WHEEL_RADIUS);
-    cout << "Motor Force: " << force << endl;
+    //cout << "Motor Force: " << force << endl;
     /*
         cout << "Torque: " << torque << endl;
         cout << "Engine Force: " << force << endl;
