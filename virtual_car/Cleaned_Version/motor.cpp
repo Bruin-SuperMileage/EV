@@ -33,16 +33,18 @@ double motor::get_voltage(int throttle) //throttle will be taken from UI (IDK ho
 }
 
 double motor::get_current() {return m_current;}
+double motor::get_voltage() {return m_voltage;}
+double motor::get_power() {return m_current * m_voltage;}
 
 // Automatically updates m_rpm
 double motor::getTorque(int throttle, double velocity)
 {  
-    double voltage = get_voltage(throttle);
+    m_voltage = get_voltage(throttle);
     double numIter = 1; //maybe change to TIC_LENGTH/Step_size in the future
     double angularVelocity = velocity / WHEEL_RADIUS;
     
     // Update values
-    double deltaV = voltage - angularVelocity/(VELOCITY_CONSTANT*RPM_CONVERSION_CONSTANT);
+    double deltaV = m_voltage - angularVelocity/(VELOCITY_CONSTANT*RPM_CONVERSION_CONSTANT);
     m_current = deltaV/sqrt(pow(WINDING_RESISTANCE,2) + pow(angularVelocity*INDUCTANCE, 2));
     double torque = TORQUE_CONSTANT*m_current*GEAR_RATIO;
 

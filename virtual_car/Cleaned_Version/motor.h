@@ -37,6 +37,8 @@ class motor
 
     double get_force(int throttle, double velocity);
     double get_current(); 
+    double get_voltage();
+    double get_power();
 
 
   private:
@@ -52,6 +54,7 @@ class motor
     double m_gear_ratio;
     double m_wheel_sprocket; 
     double m_current;
+    double m_voltage;
 
     //timing
     int m_step;
