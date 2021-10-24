@@ -28,7 +28,7 @@ int main(){
 
 
     string start = "";
-    cout << "Hit 'a' to begin simulation, 'b' for run 10 coast 90 test, 'c' for coast test, 't for current test, (or 'q' to quit)" << endl;
+    cout << "Hit 'a' to begin simulation, 'b' for run 10 coast 90 test, 'c' for coast test, 't for current test, 'l' for one lap test, (or 'q' to quit)" << endl;
     cin >> start;
 
     if(tolower(start[0]) == 'q')
@@ -117,6 +117,33 @@ int main(){
 
         cout << "Input Output Filename" << endl;
         cin >> filename;
+
+        physical_forces* Phys = new physical_forces;
+        motor* Motor = new motor;
+        track* Track = new track;
+
+        time = simulated_run(Motor, Phys, Track, current_speed, lap_number, joules, threshold, run_distance, coast_distance, filename);
+        total_distance = Track->get_track_length() * lap_number;
+
+        average_velocity = total_distance/time;
+        double miles_per_kwh = total_distance/joules*MILES_PER_KWH_CONVERSION;
+
+        ofstream file;
+        file.open("./results/" + filename + ".txt", fstream::app);
+        file << "Time: " <<  time  << endl << average_velocity << endl << "M/KWH: " << miles_per_kwh << endl;
+        file.close();
+
+        cout << "Time: " << time << endl;
+        cout << "Ave Velocity: " << average_velocity << endl;
+        cout << "M/KWH: " << miles_per_kwh << endl;
+    }
+
+    if(tolower(start[0]) == 'l'){
+        lap_number = 1;
+        run_distance = 10;
+        coast_distance = 90;
+        threshold = 87;
+        filename = "CurrentTest";
 
         physical_forces* Phys = new physical_forces;
         motor* Motor = new motor;

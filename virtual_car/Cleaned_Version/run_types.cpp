@@ -1,6 +1,10 @@
 #include "run_types.h"
 #include <fstream>
 #define VERBOSE 0
+#define VELOCITY 0
+#define JOULES 1
+#define TEN_METER_TIME 2
+#define HUNDRED_METER_TIME 3
 
 double get_kinetic_energy(double v_i, double v_f){
    double KE_init = 0.5*CAR_MASS*v_i*v_i;
@@ -33,6 +37,7 @@ vector<double> coast(motor* Motor, physical_forces* Phys, track* Track, double &
         if(distance > run_distance){
             ret.push_back(velocity);
             ret.push_back(joules);
+            ret.push_back(time);
         }
 
         Track->update_coordinates(distance);
@@ -91,6 +96,7 @@ vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, doub
         joules += max(0.0, Motor->get_power() * TIC_LENGTH) - get_kinetic_energy(init_velocity, velocity);
         time += TIC_LENGTH;
 
+
         if(VERBOSE){
             cout << "   Velocity: " << velocity << endl;
             cout << "   Distance: " << distance << endl;
@@ -100,6 +106,7 @@ vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, doub
 
     ret.push_back(velocity);
     ret.push_back(joules);
+    ret.push_back(time); //10 meter time
 
     while(distance < run_distance + coast_distance){
 
@@ -132,7 +139,7 @@ vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, doub
         }
     }
 
-    ret.push_back(time);
+    ret.push_back(time); //100 meter time
     return ret;
 }
 
@@ -187,7 +194,7 @@ double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double s
             vector<double> coast_data = coast(Motor, Phys, &track_coast, speed_coast, joules_coast, run_distance, coast_distance);
             distance += run_distance;
 
-            double time_diff =  run_data[2] - coast_data[2];
+            double time_diff =  run_data[HUNDRED_METER_TIME] - coast_data[HUNDRED_METER_TIME];
             double joules_diff = joules_run - joules_coast;
            
             double ratio = joules_diff / time_diff;
@@ -204,12 +211,12 @@ double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double s
 
             file << "Current Velocity: " << cur_speed << "\t";
 
-           if(ratio > threshold || coast_data[2] == -1){
+           if(ratio > threshold || coast_data[TEN_METER_TIME] == -1 || coast_data[HUNDRED_METER_TIME] == -1){
                 cur_track = track_run;
-                cur_speed = run_data[0];
-                joules_lost = run_data[1] - cur_joules;
-                cur_joules = run_data[1];
-                time += run_data[2];
+                cur_speed = run_data[VELOCITY];
+                joules_lost = run_data[JOULES] - cur_joules;
+                cur_joules = run_data[JOULES];
+                time += run_data[TEN_METER_TIME];
                 run_num++;
 
                 file << "Final Velocity: " << run_data[0] << "\t" << "Joules Lost: " << joules_lost << "\t";
@@ -221,10 +228,10 @@ double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double s
 
            else{
                 cur_track = track_coast;
-                cur_speed = coast_data[0];
-                joules_lost = coast_data[1] - cur_joules;
-                cur_joules = coast_data[1];
-                time += coast_data[2];
+                cur_speed = coast_data[VELOCITY];
+                joules_lost = coast_data[JOULES] - cur_joules;
+                cur_joules = coast_data[JOULES];
+                time += coast_data[TEN_METER_TIME];
                 coast_num++;
 
                 file << "Final Velocity: " << coast_data[0] << "\t" << "Joules Lost: " << joules_lost << "\t";

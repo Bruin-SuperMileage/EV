@@ -142,4 +142,3 @@ void track::update_coordinates(double distance){
         m_coord_angle = angle_between_coordinates();
     }
 }
-

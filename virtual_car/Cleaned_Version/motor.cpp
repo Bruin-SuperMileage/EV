@@ -48,6 +48,11 @@ double motor::getTorque(int throttle, double velocity)
     m_current = deltaV/sqrt(pow(WINDING_RESISTANCE,2) + pow(angularVelocity*INDUCTANCE, 2));
     double torque = TORQUE_CONSTANT*m_current*GEAR_RATIO;
 
+   // cout << "m_current: " << m_current << endl;
+   // cout << "deltaV: " << deltaV << endl;
+   // cout << "angularVelocity: " << angularVelocity << endl;
+
+
     /*
     cout << "Voltage: " << voltage << endl;
     cout << "DeltaV: " << deltaV << endl;

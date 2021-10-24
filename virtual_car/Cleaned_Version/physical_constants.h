@@ -8,7 +8,7 @@ const double DRAG_CONSTANT = 0.5;
 const double DRAG_AREA = 0.15;
 const double FLUID_DENSITY = 1.292; //typical value for air at room pressure and standard atm press.
 const double TIC_LENGTH = 0.03125; //Tic length
-const double WHEEL_RADIUS = 0.10; // Need to calculate or find out for torque -> force calculation 
+const double WHEEL_RADIUS = 0.5; // Need to calculate or find out for torque -> force calculation 
 const double MILES_PER_KWH_CONVERSION = 2236.94;
 
 #endif
