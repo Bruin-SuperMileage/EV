@@ -1,0 +1,13 @@
+Current Velocity: 0	Final Velocity: 4.937	Joules Lost: 11273	Distance: 100	Time: -1	Run  	
+Current Velocity: 4.937	Final Velocity: 7.121	Joules Lost: 3935	Distance: 200	Time: 19.28	Run  	
+Current Velocity: 7.121	Final Velocity: 8.675	Joules Lost: 2843	Distance: 300	Time: 14.94	Run  	
+Current Velocity: 8.675	Final Velocity: 8.299	Joules Lost: 248	Distance: 400	Time: 8.289	Coast	
+Current Velocity: 8.299	Final Velocity: 7.908	Joules Lost: 247	Distance: 500	Time: 7.898	Coast	
+Current Velocity: 7.908	Final Velocity: 7.502	Joules Lost: 244	Distance: 600	Time: 7.493	Coast	
+Current Velocity: 7.502	Final Velocity: 7.083	Joules Lost: 239	Distance: 700	Time: 7.073	Coast	
+Current Velocity: 7.083	Final Velocity: 8.638	Joules Lost: 2848	Distance: 800	Time: 15.06	Run  	
+Current Velocity: 8.638	Final Velocity: 8.262	Joules Lost: 247	Distance: 900	Time: 8.252	Coast	
+Current Velocity: 8.262	Final Velocity: 7.872	Joules Lost: 245	Distance: 1000	Time: 7.862	Coast	
+Time: 95.1488
+10.4215
+M/KWH: 99.1455

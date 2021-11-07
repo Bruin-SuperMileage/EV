@@ -1,8 +1,14 @@
 #include <Wire.h>
 #include <SPI.h>
+#include "libraries/SparkFunMPL3115A2.h"
+#include "libraries/SparkFunLSM9DS1.h"
+#include "libraries/SparkFun_Ublox_Arduino_Library.h"
+
+/*
 #include <SparkFunMPL3115A2.h>
 #include <SparkFunLSM9DS1.h>
 #include <SparkFun_Ublox_Arduino_Library.h>
+*/
 
 MPL3115A2 myPressure;
 LSM9DS1 imu;
