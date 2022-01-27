@@ -1,6 +1,6 @@
 #include "run_types.h"
 #include <fstream>
-#define VERBOSE 0
+#define VERBOSE 1
 #define VELOCITY 0
 #define JOULES_100 3
 #define JOULES_10 2
@@ -41,7 +41,6 @@ vector<double> coast(motor* Motor, physical_forces* Phys, track* Track, double &
             ret.push_back(velocity);
             ret.push_back(time);
             ret.push_back(joules_10);
-            ret.push_back(joules_lost);
         }
 
         Track->update_coordinates(distance);
@@ -56,7 +55,9 @@ vector<double> coast(motor* Motor, physical_forces* Phys, track* Track, double &
             cout << "Made it to Coast" << endl;
             cout << "   Velocity: " << velocity << endl;
             cout << "   Distance: " << distance << endl;
-            cout << "Joules: " << joules_lost << endl;
+            cout << "Power Consumption: " <<  Motor->get_power() * TIC_LENGTH << endl;
+            cout << "Joules Lost: " << joules_lost << endl;
+            cout << "Kinetic Energy Delta: " << get_kinetic_energy(init_velocity, velocity) << endl;
         }
 
         //if car comes to a stop everything will return -1
@@ -70,6 +71,7 @@ vector<double> coast(motor* Motor, physical_forces* Phys, track* Track, double &
         }
             
     }
+    ret.push_back(joules_lost);
     ret.push_back(time);
     return ret;
 }
@@ -101,7 +103,11 @@ vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, doub
         Track->update_coordinates(distance);
 
         //TODO: FIX THIS LINE
-        joules_10 +=  max(0.0, Motor->get_power() * TIC_LENGTH);
+
+        //Calculates the amount of energy expended in the first 10 meters
+        joules_10 += max(0.0, Motor->get_power() * TIC_LENGTH);
+
+        //Calculates the energy dissipated
         joules_lost += max(0.0, Motor->get_power() * TIC_LENGTH) - get_kinetic_energy(init_velocity, velocity);
         
 
@@ -112,6 +118,9 @@ vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, doub
             cout << "   Velocity: " << velocity << endl;
             cout << "   Distance: " << distance << endl;
             cout << "Made it to Run 10" << endl;
+            cout << "Joules Generated: " <<  Motor->get_power() * TIC_LENGTH << endl;
+            cout << "Joules Lost: " << joules_lost << endl;
+            cout << "Kinetic Energy: " << get_kinetic_energy(init_velocity, velocity) << endl;
         }
     }
 
@@ -120,26 +129,28 @@ vector<double> run_coast(motor* Motor, physical_forces* Phys, track* Track, doub
     ret.push_back(joules_10); //joules created in 10 meters
     ret.push_back(joules_lost); //
 
-
-
     while(distance < run_distance + coast_distance){
 
         incline = Track->get_incline();
         double net_force = Motor->get_force(0, velocity) + Phys->get_grav_x(incline) + Phys->get_drag(velocity) + Phys->get_friction(incline);
 
         acceleration = net_force / CAR_MASS;
+        double init_velocity = velocity;
         velocity = max(0.0, velocity + acceleration * TIC_LENGTH);
         distance += velocity * TIC_LENGTH;
 
         Track->update_coordinates(distance);
 
-        joules_lost += max(0.0, Motor->get_current() * velocity * TIC_LENGTH);
+        joules_lost += max(0.0, Motor->get_power() * TIC_LENGTH) - get_kinetic_energy(init_velocity, velocity);
         time += TIC_LENGTH;
 
         if(VERBOSE){
             cout << "   Velocity: " << velocity << endl;
             cout << "   Distance: " << distance << endl;
             cout << "Made it to Run 100" << endl;
+            cout << "Joules Generated: " <<  Motor->get_power() * TIC_LENGTH << endl;
+            cout << "Joules Lost: " << joules_lost << endl;
+            cout << "Kinetic Energy: " << get_kinetic_energy(init_velocity, velocity) << endl;
         }
 
         
@@ -195,6 +206,7 @@ double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double s
 
             // TODO: MAKE ASSIGNMENT OPERATOR FOR TRACK (AND ANYTHING ELSE WE NEED) 
 
+            //Update data from Selected Run
             track_run = cur_track;
             track_coast = cur_track;
 
@@ -205,6 +217,7 @@ double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double s
             joules_run = cur_joules;
             joules_coast = cur_joules;
 
+            //Runs with either pressing accelerator or coasting
             vector<double> run_data = run_coast(Motor, Phys, &track_run, speed_run, joules_run, run_distance, coast_distance);
             vector<double> coast_data = coast(Motor, Phys, &track_coast, speed_coast, joules_coast, run_distance, coast_distance);
             distance += run_distance;
@@ -225,31 +238,29 @@ double simulated_run(motor* Motor, physical_forces* Phys, track* Track, double s
             file.precision(4);
 
             file << "Current Velocity: " << cur_speed << "\t";
+            file << "Joules Lost Run: " << run_data[TIME_100] << "\t";
+            file << "Joules Lost Coast: " << coast_data[TIME_100] << "\t";
 
            if(ratio > threshold || coast_data[TIME_10] == -1 || coast_data[TIME_100] == -1){
                 cur_track = track_run;
                 cur_speed = run_data[VELOCITY];
-                joules_lost = run_data[JOULES_10] - cur_joules;
                 cur_joules = run_data[JOULES_10];
                 time += run_data[TIME_10];
                 run_num++;
 
-                file << "Final Velocity: " << run_data[VELOCITY] << "\t" << "Joules Lost: " << joules_lost << "\t";
+                file << "Final Velocity: " << run_data[VELOCITY] << "\t" << "Power Conmsumption: " << cur_joules << "\t";
                 file << "Distance: " << distance << "\t" << "Time: " <<  run_data[2] << "\t";
                 file << "Run  " << "\t";
-
-
             }
 
            else{
                 cur_track = track_coast;
                 cur_speed = coast_data[VELOCITY];
-                joules_lost = coast_data[JOULES_10] - cur_joules;
                 cur_joules = coast_data[JOULES_10];
                 time += coast_data[TIME_10];
                 coast_num++;
 
-                file << "Final Velocity: " << coast_data[0] << "\t" << "Joules Lost: " << joules_lost << "\t";
+                file << "Final Velocity: " << coast_data[0] << "\t" << "Power Consumption: " << cur_joules << "\t";
                 file << "Distance: " << distance << "\t" << "Time: " <<  coast_data[2] << "\t";
                 file << "Coast" << "\t";
            }
@@ -302,8 +313,11 @@ double run(motor* Motor, physical_forces* Phys, track* Track, double starting_sp
             throttle = 250; //sets force ie engine is pressed
             //cout << "Engine Pressed" << endl;
             }
-            
+
+        //Get incline of the car based on current track position    
         incline = Track->get_incline();
+
+        //Calculate total forces from all sources being enacted on the car
         double net_force = Motor->get_force(throttle, velocity) + Phys->get_grav_x(incline) + Phys->get_drag(velocity) + Phys->get_friction(incline);
 
         acceleration = net_force / CAR_MASS;
@@ -319,8 +333,10 @@ double run(motor* Motor, physical_forces* Phys, track* Track, double starting_sp
             cur_lap++;
         }
         
-        //adds to total time of run
+        //Updates energy output of run
         joules += Motor->get_current() * velocity * TIC_LENGTH;
+
+        //adds to total time of run
         time += TIC_LENGTH;
 
         if(VERBOSE){

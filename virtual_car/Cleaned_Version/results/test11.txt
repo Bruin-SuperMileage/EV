@@ -1,0 +1,5 @@
+Current Velocity: 0	Final Velocity: 4.937	Joules Lost: 12247	Distance: 10	Time: 1.225e+04	Run  	
+Current Velocity: 4.937	Final Velocity: 7.121	Joules Lost: -7259	Distance: 20	Time: 4989	Run  	
+Current Velocity: 7.121	Final Velocity: 8.675	Joules Lost: -1163	Distance: 30	Time: 3825	Run  	
+Current Velocity: 8.675	Final Velocity: 9.974	Joules Lost: -581	Distance: 40	Time: 3243	Run  	
+Current Velocity: 9.974	Final Velocity: 11.1	Joules Lost: -387	Distance: 50	Time: 2856	Run  	

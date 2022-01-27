@@ -99,7 +99,7 @@ int main(){
 
         cout << "Time: " << run_data[2] << endl;
         cout << "Ave Velocity: " << average_velocity << endl;
-        cout << "M/KWH: " << miles_per_kwh << endl;
+        cout << "Joules: " << joules << endl;
     }
 
     if(tolower(start[0]) == 't'){
